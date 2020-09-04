@@ -13,11 +13,13 @@ export class FetchValueDataComponent implements OnInit  {
   hubConnection: HubConnection;
   userInterfaceBaseUrl: string;
 
-  constructor(http: HttpClient,
+  constructor(
+    http: HttpClient,
     @Inject('BASE_URL') baseUrl: string,
     configuration: ConfigurationService)
   {
-    http.get<string[]>('http://archimedes-service-ui.com:2103/values').subscribe(result => { this.valueForecasts = result; }, error => console.error(error));
+    http.get<string[]>('http://archimedes-service-ui.com:2103/values')
+    .subscribe(result => { this.valueForecasts = result; }, error => console.error(error));
 
     this.userInterfaceBaseUrl = configuration.userInterfaceBaseUrl;
   }
