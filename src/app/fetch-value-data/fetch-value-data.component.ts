@@ -19,7 +19,7 @@ export class FetchValueDataComponent implements OnInit  {
     configuration: ConfigurationService)
   {
 
-    http.get<string[]>(this.userInterfaceBaseUrl + '/Values')
+    http.get<string[]>(appConfigService.userInterfaceBaseUrl + '/Values')
     .subscribe(result => { this.valueForecasts = result; }, error => console.error(error));
 
     this.userInterfaceBaseUrl = configuration.userInterfaceBaseUrl;
