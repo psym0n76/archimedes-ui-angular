@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FetchValueDataComponent } from './fetch-value-data/fetch-value-data.component';
+import { AppConfigService } from './services/appConfigService';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -38,13 +39,29 @@ const appInitializerFn = (appConfig: ConfigurationService) => {
       { path: 'fetch-value-data', component: FetchValueDataComponent }
     ])
   ],
-  providers: [ConfigurationService,
+/*   providers: [ConfigurationService,
   {
     provide: APP_INITIALIZER,
     useFactory: appInitializerFn,
     multi: true,
     deps: [ConfigurationService]
-  }],
+  }], */
+
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [AppConfigService],
+      useFactory: (appConfigService: AppConfigService) => {
+        return () => {
+          //Make sure to return a promise!
+          return appConfigService.loadAppConfig();
+        };
+      }
+    }
+  ],
+
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

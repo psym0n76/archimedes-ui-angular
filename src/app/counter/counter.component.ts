@@ -9,5 +9,5 @@ export class CounterComponent {
 
   public incrementCounter(): void {
     this.currentCount++;
-  }
+ }
 }

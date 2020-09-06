@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { ConfigurationService } from '../services/configuration.service';
+import { AppConfigService } from '../services/appConfigService';
 
 @Component({
   selector: 'app-value',
@@ -13,12 +14,12 @@ export class FetchValueDataComponent implements OnInit  {
   hubConnection: HubConnection;
   userInterfaceBaseUrl: string;
 
-  constructor(
+  constructor(private appConfigService: AppConfigService, 
     http: HttpClient,
-    @Inject('BASE_URL') baseUrl: string,
     configuration: ConfigurationService)
   {
-    http.get<string[]>('http://archimedes-service-ui.com:2103/values')
+
+    http.get<string[]>(this.userInterfaceBaseUrl + '/Values')
     .subscribe(result => { this.valueForecasts = result; }, error => console.error(error));
 
     this.userInterfaceBaseUrl = configuration.userInterfaceBaseUrl;
@@ -28,10 +29,10 @@ export class FetchValueDataComponent implements OnInit  {
 
     console.log(this.userInterfaceBaseUrl);
 
-    this.hubConnection = new HubConnectionBuilder().withUrl('http://archimedes-service-ui.com:2103/Hubs/Values').build();
+    this.hubConnection = new HubConnectionBuilder().withUrl(this.userInterfaceBaseUrl + '/Hubs/Values').build();
     this.hubConnection
       .start()
-      .then(() => console.log('Connection started..http://archimedes-service-ui.com:2103/Hubs/Values'))
+      .then(() => console.log('Connection started..' + this.userInterfaceBaseUrl + '/Hubs/Values'))
       .catch(err => console.log('Error while establishing connection : ('));
 
     this.hubConnection.on('Add',
@@ -43,4 +44,3 @@ export class FetchValueDataComponent implements OnInit  {
       });
   }
 }
-
