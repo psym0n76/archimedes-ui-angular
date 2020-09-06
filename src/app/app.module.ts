@@ -39,14 +39,6 @@ const appInitializerFn = (appConfig: ConfigurationService) => {
       { path: 'fetch-value-data', component: FetchValueDataComponent }
     ])
   ],
-/*   providers: [ConfigurationService,
-  {
-    provide: APP_INITIALIZER,
-    useFactory: appInitializerFn,
-    multi: true,
-    deps: [ConfigurationService]
-  }], */
-
   providers: [
     {
       provide: APP_INITIALIZER,
@@ -60,7 +52,6 @@ const appInitializerFn = (appConfig: ConfigurationService) => {
       }
     }
   ],
-
 
   bootstrap: [AppComponent]
 })

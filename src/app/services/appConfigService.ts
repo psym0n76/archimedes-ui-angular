@@ -27,4 +27,4 @@ import { HttpClient } from '@angular/common/http';
   
       return this.appConfig.userInterfaceBaseUrl;
     }
-  }
+}
