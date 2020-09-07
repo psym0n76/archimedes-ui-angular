@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule , APP_INITIALIZER} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { ConfigurationService } from './services/configuration.service';
 import { AppComponent } from './app.component';
@@ -19,6 +19,14 @@ const appInitializerFn = (appConfig: ConfigurationService) => {
   };
 };
 
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'counter', component: CounterComponent },
+  { path: 'fetch-data', component: FetchDataComponent },
+  { path: 'fetch-value-data', component: FetchValueDataComponent }
+
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,12 +40,13 @@ const appInitializerFn = (appConfig: ConfigurationService) => {
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'fetch-value-data', component: FetchValueDataComponent }
-    ])
+    RouterModule.forRoot(appRoutes)
+    // RouterModule.forRoot([
+    //   { path: '', component: HomeComponent, pathMatch: 'full' },
+    //   { path: 'counter', component: CounterComponent },
+    //   { path: 'fetch-data', component: FetchDataComponent },
+    //   { path: 'fetch-value-data', component: FetchValueDataComponent }
+    // ])
   ],
   providers: [
     {
