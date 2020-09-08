@@ -17,7 +17,7 @@ export class FetchValueDataComponent implements OnInit  {
   constructor(private appConfigService: AppConfigService,
               http: HttpClient)
   {
-    console.log('Initial load of data -  fetch-data-value');
+    console.log('Initial load of fetch-data-value');
     http.get<string[]>(appConfigService.userInterfaceBaseUrl + '/Values')
     .subscribe(result => { this.valueForecasts = result; }, error => console.error(error));
     this.userInterfaceBaseUrl = appConfigService.userInterfaceBaseUrl;
