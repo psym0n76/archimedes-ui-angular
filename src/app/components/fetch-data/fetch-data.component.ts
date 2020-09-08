@@ -20,5 +20,6 @@ export class FetchDataComponent implements OnInit {
       , error => {
           alert('An unexpected error has occurred');
           this.toastr.error(error);
+    } );
   }
 }
