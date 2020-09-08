@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
   })
-  export class AppConfigService {
+  export class ConfigService {
 
     private appConfig: any;
 // this service is responsible for retrieving the config jason fel from assets
@@ -26,5 +26,14 @@ import { HttpClient } from '@angular/common/http';
       }
 
       return this.appConfig.userInterfaceBaseUrl;
+    }
+
+    get appVersion(): string {
+
+      if (!this.appConfig) {
+        throw Error('Config file not loaded!');
+      }
+
+      return this.appConfig.version;
     }
 }
