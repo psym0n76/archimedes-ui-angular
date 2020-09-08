@@ -14,7 +14,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { FetchValueDataComponent } from './components/fetch-value-data/fetch-value-data.component';
 import { ConfigService } from './services/config.service';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -38,8 +38,7 @@ const appRoutes: Routes = [
     CounterComponent,
     FetchDataComponent,
     FetchValueDataComponent,
-    VersionComponent,
-
+    VersionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

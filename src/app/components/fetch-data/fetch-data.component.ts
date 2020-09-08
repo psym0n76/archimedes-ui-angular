@@ -19,7 +19,6 @@ export class FetchDataComponent implements OnInit {
         this.toastr.success('Successfully uploaded data'); }
       , error => {
           alert('An unexpected error has occurred');
-          this.toastr.error('error');
-          console.log(error); } ); // toast ntofication
+          this.toastr.error(error);
   }
 }

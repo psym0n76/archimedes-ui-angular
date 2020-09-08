@@ -24,8 +24,7 @@ initialLoad(): void {
         this.valueForecasts = result;
         this.toastr.success('Successfully uploaded data');
        }, (error: string) => {
-        this.toastr.error(error) ;
-        console.error(error); });
+        this.toastr.error(error) ; });
 }
 
   ngOnInit(): void {
@@ -42,9 +41,7 @@ initialLoad(): void {
 
     this.hubConnection.on('Add',
       (type: string) => {
-
         this.valueForecasts.push(type);
-        console.log('Message Received [' + type  + '] from ' + this.configService.userInterfaceBaseUrl);
         this.toastr.success('Message Received [' + type  + '] from ' + this.configService.userInterfaceBaseUrl);
       });
   }
