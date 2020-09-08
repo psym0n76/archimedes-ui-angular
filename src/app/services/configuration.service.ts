@@ -9,11 +9,12 @@ export class ConfigurationService {
   constructor(private http: HttpClient) { }
 
   loadConfig(): any {
-    return this.http.get<IServerConfiguration>('http://archimedes-service-ui.com:2103/configuration')
+    return this.http.get<IServerConfiguration>('http://localhost:2103/configuration')
       .toPromise()
       .then(result => {
         // this.configuration = <IServerConfiguration>(result);
         this.configuration = result as IServerConfiguration;
+        console.log(this.configuration.UserInterfaceBaseUrl);
       }, error => console.error(error));
   }
 

@@ -15,14 +15,13 @@ export class FetchValueDataComponent implements OnInit  {
   userInterfaceBaseUrl: string;
 
   constructor(private appConfigService: AppConfigService,
-              http: HttpClient,
-              configuration: ConfigurationService)
+              http: HttpClient)
   {
-
+    console.log('Initial load of data -  fetch-data-value');
     http.get<string[]>(appConfigService.userInterfaceBaseUrl + '/Values')
     .subscribe(result => { this.valueForecasts = result; }, error => console.error(error));
+    this.userInterfaceBaseUrl = appConfigService.userInterfaceBaseUrl;
 
-    this.userInterfaceBaseUrl = configuration.userInterfaceBaseUrl;
   }
 
   ngOnInit(): void {

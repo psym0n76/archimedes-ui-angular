@@ -10,6 +10,7 @@ export class FetchDataComponent {
   public forecasts: WeatherForecast[];
 
   constructor(private appConfigService: AppConfigService, http: HttpClient) {
+    console.log(this.appConfigService.userInterfaceBaseUrl);
     http.get<WeatherForecast[]>(this.appConfigService.userInterfaceBaseUrl + '/weatherforecast').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
