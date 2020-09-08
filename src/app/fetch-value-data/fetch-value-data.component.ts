@@ -26,7 +26,7 @@ export class FetchValueDataComponent implements OnInit  {
 
   ngOnInit(): void {
 
-    console.log(this.userInterfaceBaseUrl);
+    console.log('User Interface baseUrl' + this.userInterfaceBaseUrl);
 
     this.hubConnection = new HubConnectionBuilder().withUrl(this.userInterfaceBaseUrl + '/Hubs/Values').build();
     this.hubConnection
@@ -38,8 +38,7 @@ export class FetchValueDataComponent implements OnInit  {
       (type: string) => {
 
         this.valueForecasts.push(type);
-        console.log('Message Received');
-        console.log(type);
+        console.log('Message Received [' + type  + '] from ' + this.userInterfaceBaseUrl);
       });
   }
 }
