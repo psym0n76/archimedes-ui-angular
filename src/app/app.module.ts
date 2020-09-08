@@ -12,6 +12,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FetchValueDataComponent } from './fetch-value-data/fetch-value-data.component';
 import { AppConfigService } from './services/appConfigService';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -59,7 +60,9 @@ const appRoutes: Routes = [
           return appConfigService.loadAppConfig();
         };
       }
-    }
+    },
+    {
+      provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
 
   bootstrap: [AppComponent]
