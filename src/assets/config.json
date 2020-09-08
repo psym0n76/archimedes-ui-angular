@@ -1,3 +1,4 @@
 {
-    "userInterfaceBaseUrl": "http://localhost:2103-willy"
+    "userInterfaceBaseUrl": "http://localhost:2103-willy",
+    "version" : "1.0.0"
   }
