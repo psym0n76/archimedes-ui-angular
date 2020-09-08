@@ -18,7 +18,6 @@ export class FetchDataComponent implements OnInit {
         this.forecasts = response;
         this.toastr.success('Successfully uploaded data'); }
       , error => {
-          alert('An unexpected error has occurred');
           this.toastr.error(error);
     } );
   }
