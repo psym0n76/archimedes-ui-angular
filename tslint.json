@@ -147,9 +147,6 @@
       "element",
       "app",
       "kebab-case"
-    ],
-    "editor.codeActionsOnSave": {
-      "source.fixAll.tslint": true
-  }
+    ]
   }
 }

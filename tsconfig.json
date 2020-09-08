@@ -16,9 +16,6 @@
       "es2018",
       "dom",
       
-    ],
-    "editor.codeActionsOnSave": {
-      "source.fixAll.tslint": true
-  }
+    ]
   }
 }
