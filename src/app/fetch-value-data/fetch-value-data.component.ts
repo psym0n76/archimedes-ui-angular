@@ -26,12 +26,12 @@ export class FetchValueDataComponent implements OnInit  {
 
   ngOnInit(): void {
 
-    console.log('User Interface baseUrl' + this.userInterfaceBaseUrl);
+    console.log('Calling: ' + this.userInterfaceBaseUrl + ' for Hubs/Values');
 
     this.hubConnection = new HubConnectionBuilder().withUrl(this.userInterfaceBaseUrl + '/Hubs/Values').build();
     this.hubConnection
       .start()
-      .then(() => console.log('Connection started..' + this.userInterfaceBaseUrl + '/Hubs/Values'))
+      .then(() => console.log('Connection started on ' + this.userInterfaceBaseUrl + '/Hubs/Values'))
       .catch(err => console.log('Error while establishing connection : ('));
 
     this.hubConnection.on('Add',
