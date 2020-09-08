@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class FetchDataComponent {
   public forecasts: WeatherForecast[];
 
-  constructor(private appConfigService: AppConfigService,http: HttpClient) {
-    http.get<WeatherForecast[]>(this.appConfigService.userInterfaceBaseUrl +'/weatherforecast').subscribe(result => {
+  constructor(private appConfigService: AppConfigService, http: HttpClient) {
+    http.get<WeatherForecast[]>(this.appConfigService.userInterfaceBaseUrl + '/weatherforecast').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
   }

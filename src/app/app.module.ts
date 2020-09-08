@@ -24,9 +24,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-data', component: FetchDataComponent },
-  { path: 'fetch-value-data', component: FetchValueDataComponent }
-
-]
+  { path: 'fetch-value-data', component: FetchValueDataComponent }];
 
 @NgModule({
   declarations: [
@@ -42,12 +40,6 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
-    // RouterModule.forRoot([
-    //   { path: '', component: HomeComponent, pathMatch: 'full' },
-    //   { path: 'counter', component: CounterComponent },
-    //   { path: 'fetch-data', component: FetchDataComponent },
-    //   { path: 'fetch-value-data', component: FetchValueDataComponent }
-    // ])
   ],
   providers: [
     {
@@ -56,7 +48,7 @@ const appRoutes: Routes = [
       deps: [AppConfigService],
       useFactory: (appConfigService: AppConfigService) => {
         return () => {
-          //Make sure to return a promise!
+          // Make sure to return a promise!
           return appConfigService.loadAppConfig();
         };
       }

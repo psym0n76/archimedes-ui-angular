@@ -14,9 +14,9 @@ export class FetchValueDataComponent implements OnInit  {
   hubConnection: HubConnection;
   userInterfaceBaseUrl: string;
 
-  constructor(private appConfigService: AppConfigService, 
-    http: HttpClient,
-    configuration: ConfigurationService)
+  constructor(private appConfigService: AppConfigService,
+              http: HttpClient,
+              configuration: ConfigurationService)
   {
 
     http.get<string[]>(appConfigService.userInterfaceBaseUrl + '/Values')
