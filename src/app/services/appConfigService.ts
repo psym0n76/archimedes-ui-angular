@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   export class AppConfigService {
 
     private appConfig: any;
-
+// this service is responsible for retrieving the config jason fel from assets
     constructor(private http: HttpClient) { }
 
     loadAppConfig(): any {

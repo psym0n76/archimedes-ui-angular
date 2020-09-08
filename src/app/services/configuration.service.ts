@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class ConfigurationService {
 
   private configuration: IServerConfiguration;
-
+// injectable service to return a configuration from an endpoint
   constructor(private http: HttpClient) { }
 
   loadConfig(): any {
