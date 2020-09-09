@@ -20,6 +20,7 @@ import { ConfigService } from './services/config.service';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HealthComponent } from './components/health/health.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-weather-data', component: FetchDataComponent },
-  { path: 'fetch-value-data', component: FetchValueDataComponent }];
+  { path: 'fetch-value-data', component: FetchValueDataComponent },
+  { path: 'health', component: HealthComponent }];
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     CounterComponent,
     FetchDataComponent,
     FetchValueDataComponent,
-    VersionComponent
+    VersionComponent,
+    HealthComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
