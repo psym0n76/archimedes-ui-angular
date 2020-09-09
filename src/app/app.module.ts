@@ -21,6 +21,8 @@ import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HealthComponent } from './components/health/health.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { GridComponent } from './components/grid/grid.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-weather-data', component: FetchDataComponent },
   { path: 'fetch-value-data', component: FetchValueDataComponent },
-  { path: 'health', component: HealthComponent }];
+  { path: 'health', component: HealthComponent },
+  { path: 'grid', component: GridComponent }];
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ const appRoutes: Routes = [
     FetchDataComponent,
     FetchValueDataComponent,
     VersionComponent,
-    HealthComponent
+    HealthComponent,
+    GridComponent
+  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -52,6 +57,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
+    AgGridModule.withComponents([]),
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right',

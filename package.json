@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
     "@aspnet/signalr": "^1.1.4",
+    "ag-grid-angular": "^24.0.0",
+    "ag-grid-community": "^24.0.0",
     "bootstrap": "^4.5.2",
     "ngx-toastr": "^13.0.0",
     "rxjs": "~6.6.0",
