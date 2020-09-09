@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
 import { HttpClient } from '@angular/common/http';
-import { WeatherForecast } from '../models/WeatherForecast';
+import { WeatherForecast } from '../models/weather-forcast';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class WeatherService {
 
   constructor(private configService: ConfigService, private http: HttpClient) {}
 
-  getWeatherForecast(): any {
+  getWeatherForecast(): Observable<WeatherForecast[]> {
 
     console.log('Calling: ' + this.configService.userInterfaceBaseUrl + ' for weather forecast');
 

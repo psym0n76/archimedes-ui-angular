@@ -1,9 +1,9 @@
+import { AppError } from './../../models/app-error';
 import { ToastrService } from 'ngx-toastr';
 import { ValuesService } from './../../services/values.service';
 import { ConfigService } from './../../services/config.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
-
 
 @Component({
   selector: 'app-value',
@@ -14,7 +14,8 @@ export class FetchValueDataComponent implements OnInit  {
   valueForecasts: string[] = [];
   hubConnection: HubConnection;
 
-  constructor(private configService: ConfigService, private service: ValuesService, private toastr: ToastrService){}
+  constructor(private configService: ConfigService, private service: ValuesService,
+              private toastr: ToastrService, private handler: AppError){}
 
 initialLoad(): void {
 
@@ -22,9 +23,7 @@ initialLoad(): void {
     this.service.getValues()
       .subscribe((result: string[]) => {
         this.valueForecasts = result;
-        this.toastr.success('Successfully uploaded data');
-       }, (error: string) => {
-        this.toastr.error(error) ; });
+        this.toastr.success('Successfully uploaded data'); }, error => {this.handler.logError(error) ; });
 }
 
   ngOnInit(): void {
