@@ -7,15 +7,13 @@ import {AgGridAngular} from 'ag-grid-angular';
   styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnInit {
-  title: string;
+
   columnDefs: { headerName: string; field: string; }[];
   rowData: { make: string; model: string; price: number; }[];
 
   constructor() { }
 
   ngOnInit(): void {
-
-    this.title = 'app';
 
     this.columnDefs = [
         {headerName: 'Make', field: 'make' },

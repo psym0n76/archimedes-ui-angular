@@ -9,7 +9,9 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './fetch-weather-data.component.html',
 })
 export class FetchDataComponent implements OnInit {
+
   public forecasts: WeatherForecast[];
+  
   constructor(private weatherService: WeatherService, private toastr: ToastrService, private handler: AppError) {}
 
   ngOnInit(): any {
