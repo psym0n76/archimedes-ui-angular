@@ -5,25 +5,67 @@
 <p *ngIf="!rowData"><em>Loading...</em></p>
 <br>
 
-<h4 id="tableLabel">Balham Style</h4>
-<ag-grid-angular
-    #agGrid
-    style="width: 600px; height: 200px;"
-    class="ag-theme-balham"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-    >
-</ag-grid-angular>
+<table class='table table-striped' aria-labelledby="tableLabel">
+    <thead>
+    <tr>
+      <th>Balham</th>
+      <th>Alpine</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><ag-grid-angular
+        #agGrid
+        style="width: 600px; height: 200px;"
+        class="ag-theme-balham"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        >
+    </ag-grid-angular></td>
+      <td><ag-grid-angular
+        #agGrid
+        style="width: 600px; height: 200px;"
+        class="ag-theme-fresh"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        >
+    </ag-grid-angular></td>
+    </tr>
+    </tbody>
+  </table>
 
-<br>
-<br>
-<h4 id="tableLabel">Alpine Style</h4>
 
-<ag-grid-angular
-    #agGrid
-    style="width: 600px; height: 200px;"
-    class="ag-theme-alpine"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-    >
-</ag-grid-angular>
+  <table class='table table-striped' aria-labelledby="tableLabel">
+    <thead>
+    <tr>
+      <th>Bootstrap</th>
+      <th>Fresh</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><ag-grid-angular
+        #agGrid
+        style="width: 600px; height: 200px;"
+        class="ag-theme-fresh"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        >
+    </ag-grid-angular></td>
+      <td><ag-grid-angular
+        #agGrid
+        style="width: 600px; height: 200px;"
+        class="ag-theme-bootstrap"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        >
+    </ag-grid-angular></td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
