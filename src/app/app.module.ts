@@ -1,6 +1,6 @@
 import { AppError } from './models/app-error';
 import { ErrorIntercept } from './error.interceptor';
-import { WeatherService } from './services/weather.service';
+import { MarketService } from './services/market.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import { VersionComponent } from './components/version/version.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { FetchDataComponent } from './components/fetch-weather-data/fetch-weather-data.component';
+import { FetchMarketDataComponent } from './components/fetch-market-data/fetch-market-data.component';
 import { FetchValueDataComponent } from './components/fetch-value-data/fetch-value-data.component';
 import { ConfigService } from './services/config.service';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -33,7 +33,7 @@ const appInitializerFn = (appConfig: ConfigurationService) => {
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'counter', component: CounterComponent },
-  { path: 'fetch-weather-data', component: FetchDataComponent },
+  { path: 'fetch-market-data', component: FetchMarketDataComponent },
   { path: 'fetch-value-data', component: FetchValueDataComponent },
   { path: 'health', component: HealthComponent },
   { path: 'grid', component: GridComponent }];
@@ -44,12 +44,11 @@ const appRoutes: Routes = [
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent,
+    FetchMarketDataComponent,
     FetchValueDataComponent,
     VersionComponent,
     HealthComponent,
     GridComponent
-  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -79,7 +78,7 @@ const appRoutes: Routes = [
           return configService.loadAppConfig();
         };
       }
-    }, WeatherService,
+    }, MarketService,
     {
       provide: LocationStrategy, useClass: HashLocationStrategy
     },
