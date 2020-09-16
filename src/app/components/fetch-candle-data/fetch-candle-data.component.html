@@ -1,0 +1,32 @@
+<h4 id="tableLabel">Candle Bid Data</h4>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!candles"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="candles">
+  <thead>
+    <tr>
+      <th>Market</th>
+      <th>Granularity</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>TickQty</th>
+      <th>TimeStamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candle of candles">
+      <td>{{ candle.market }}</td>
+      <td>{{ candle.granularity }}</td>
+      <td>{{ candle.bidOpen }}</td>
+      <td>{{ candle.bigHigh }}</td>
+      <td>{{ candle.bidLow }}</td>
+      <td>{{ candle.bidClose }}</td>
+      <td>{{ candle.tickQty }}</td>
+      <td>{{ candle.timeStamp }}</td>
+    </tr>
+  </tbody>
+</table>
