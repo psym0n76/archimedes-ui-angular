@@ -13,5 +13,5 @@ export interface Candle
     askClose: number;
 
     tickQty: number;
-    timeStamp: Date;
+    timestamp: Date;
 }
