@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HealthComponent } from './components/health/health.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { GridComponent } from './components/grid/grid.component';
+import { MarketGridComponent } from './components/market-grid/market-grid.component';
 
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     HealthComponent,
     GridComponent,
     FetchCandleDataComponent,
-    FetchPriceDataComponent
+    FetchPriceDataComponent,
+    MarketGridComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -87,9 +89,9 @@ const appRoutes: Routes = [
           return configService.loadAppConfig();
         };
       }
-    }, 
-    MarketService, 
-    PriceService, 
+    },
+    MarketService,
+    PriceService,
     CandleService,
     {
       provide: LocationStrategy, useClass: HashLocationStrategy

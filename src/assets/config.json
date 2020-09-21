@@ -1,4 +1,4 @@
 {
-    "userInterfaceBaseUrl": "http://localhost:2103",
+    "userInterfaceBaseUrl": "http://ui-service.dev.archimedes.com",
     "version" : "1.0.0"
   }
