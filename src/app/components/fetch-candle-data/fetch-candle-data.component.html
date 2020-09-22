@@ -9,6 +9,8 @@
     <tr>
       <th>Market</th>
       <th>Granularity</th>
+      <th>DateFrom</th>
+      <th>DateTo</th>
       <th>Open</th>
       <th>High</th>
       <th>Low</th>
@@ -21,6 +23,8 @@
     <tr *ngFor="let candle of candles">
       <td>{{ candle.market }}</td>
       <td>{{ candle.granularity }}</td>
+      <td>{{ candle.dateFrom }}</td>
+      <td>{{ candle.dateTo }}</td>
       <td>{{ candle.bidOpen }}</td>
       <td>{{ candle.bigHigh }}</td>
       <td>{{ candle.bidLow }}</td>
