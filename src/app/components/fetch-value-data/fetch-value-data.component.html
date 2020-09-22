@@ -22,3 +22,22 @@
   </tr>
   </tbody>
 </table>
+
+<table class='table table-striped' aria-labelledby="tableLabel">
+  <thead>
+  <tr>
+    <th>Balham</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><ag-grid-angular
+      #agGrid
+      style="width: 900px; height: 200px;"
+      class="ag-theme-balham"
+      [rowData]="rowMarketValueData"
+      [columnDefs]="columnMarketValueDefs">
+  </ag-grid-angular></td>
+  </tr>
+  </tbody>
+</table>

@@ -2,8 +2,10 @@
 
 <p>This component demonstrates fetching data from the server and displaying in AG-Grid.</p>
 
-<p *ngIf="!rowData"><em>Loading...</em></p>
+<p *ngIf="!rowMarketData"><em>Loading...</em></p>
 <br>
+
+<button (click)="getSelectedRows()">Get Selected Rows</button>
 
 <table class='table table-striped' aria-labelledby="tableLabel">
     <thead>
@@ -15,10 +17,10 @@
     <tr>
       <td><ag-grid-angular
         #agGrid
-        style="width: 600px; height: 200px;"
+        style="width: 900px; height: 200px;"
         class="ag-theme-balham"
-        [rowData]="rowData"
-        [columnDefs]="columnDefs">
+        [rowData]="rowMarketData"
+        [columnDefs]="columnMarketDefs">
     </ag-grid-angular></td>
     </tr>
     </tbody>

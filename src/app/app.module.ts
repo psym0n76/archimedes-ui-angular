@@ -43,6 +43,7 @@ const appRoutes: Routes = [
   { path: 'fetch-candle-data', component: FetchCandleDataComponent },
   { path: 'fetch-price-data', component: FetchPriceDataComponent },
   { path: 'fetch-value-data', component: FetchValueDataComponent },
+  { path: 'market-grid', component: MarketGridComponent },
   { path: 'health', component: HealthComponent },
   { path: 'grid', component: GridComponent }];
 
