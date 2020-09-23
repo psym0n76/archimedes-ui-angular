@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -28,6 +29,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgGridModule } from 'ag-grid-angular';
 import { GridComponent } from './components/grid/grid.component';
 import { MarketGridComponent } from './components/market-grid/market-grid.component';
+import { MatTableComponent } from './components/mat-table/mat-table.component';
+
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DataMatTableComponent } from './components/data-mat-table/data-mat-table.component';
 
 
 
@@ -44,6 +51,7 @@ const appRoutes: Routes = [
   { path: 'fetch-candle-data', component: FetchCandleDataComponent },
   { path: 'fetch-price-data', component: FetchPriceDataComponent },
   { path: 'fetch-value-data', component: FetchValueDataComponent },
+  { path: 'data-mat-table', component: DataMatTableComponent },
   { path: 'market-grid', component: MarketGridComponent },
   { path: 'health', component: FetchHealthDataComponent },
   { path: 'grid', component: GridComponent }];
@@ -61,11 +69,17 @@ const appRoutes: Routes = [
     GridComponent,
     FetchCandleDataComponent,
     FetchPriceDataComponent,
-    MarketGridComponent
+    MarketGridComponent,
+    MatTableComponent,
+    DataMatTableComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,

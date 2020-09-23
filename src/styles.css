@@ -4,6 +4,7 @@
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 @import "~ag-grid-community/dist/styles/ag-theme-bootstrap.css";
 @import "~ag-grid-community/dist/styles/ag-theme-fresh.css";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 /* Provide sufficient contrast against white background */
 a {

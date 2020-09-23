@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-health-data',
   templateUrl: './fetch-health-data.component.html',
+  styleUrls: ['./fetch-health-data.component.css']
 })
 export class FetchHealthDataComponent implements OnInit {
 
