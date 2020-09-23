@@ -20,14 +20,15 @@ import { FetchMarketDataComponent } from './components/fetch-market-data/fetch-m
 import { FetchValueDataComponent } from './components/fetch-value-data/fetch-value-data.component';
 import { FetchCandleDataComponent } from './components/fetch-candle-data/fetch-candle-data.component';
 import { FetchPriceDataComponent } from './components/fetch-price-data/fetch-price-data.component';
+import { FetchHealthDataComponent } from './components/fetch-health-data/fetch-health-data.component';
 import { ConfigService } from './services/config.service';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HealthComponent } from './components/health/health.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { GridComponent } from './components/grid/grid.component';
 import { MarketGridComponent } from './components/market-grid/market-grid.component';
+
 
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
   { path: 'fetch-price-data', component: FetchPriceDataComponent },
   { path: 'fetch-value-data', component: FetchValueDataComponent },
   { path: 'market-grid', component: MarketGridComponent },
-  { path: 'health', component: HealthComponent },
+  { path: 'health', component: FetchHealthDataComponent },
   { path: 'grid', component: GridComponent }];
 
 @NgModule({
@@ -56,7 +57,7 @@ const appRoutes: Routes = [
     FetchMarketDataComponent,
     FetchValueDataComponent,
     VersionComponent,
-    HealthComponent,
+    FetchHealthDataComponent,
     GridComponent,
     FetchCandleDataComponent,
     FetchPriceDataComponent,

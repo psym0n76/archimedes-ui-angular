@@ -34,7 +34,6 @@ initialLoad(): void {
   this.service.getValues()
       .subscribe((result: string[]) => {
         this.valueForecasts = result;
-        this.rowMarketValueData = result;
         this.toastr.success('Successfully uploaded data'); }, error => {this.handler.logError(error) ; });
 }
 
@@ -53,7 +52,6 @@ initialLoad(): void {
     this.hubConnection.on('Add',
       (type: string) => {
         this.valueForecasts.push(type);
-        this.rowMarketValueData.push(type + 'test');
         this.toastr.success('Message Received [' + type  + '] from ' + this.configService.userInterfaceBaseUrl);
       });
   }

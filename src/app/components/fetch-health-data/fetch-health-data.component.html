@@ -1,0 +1,26 @@
+<h4 id="tableLabel">Health Data</h4>
+
+<p>This component reports the status of each service</p>
+
+<p *ngIf="!healthUrls"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="healthUrls">
+  <thead>
+    <tr>
+      <th>AppName</th>
+      <th>Url</th>
+      <th>Version</th>
+      <th>Status</th>
+      <th>Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let url of healthUrls">
+      <td>{{ url.appName }}</td>
+      <td>{{ url.url }}</td>
+      <td>{{ url.version }}</td>
+      <td>{{ url.statusMessage }}</td>
+      <td>{{ url.lastUpdated }}</td>
+    </tr>
+  </tbody>
+</table>
