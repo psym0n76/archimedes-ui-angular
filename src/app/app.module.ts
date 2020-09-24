@@ -18,8 +18,6 @@ import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { FetchMarketDataComponent } from './components/fetch-market-data/fetch-market-data.component';
 import { FetchValueDataComponent } from './components/fetch-value-data/fetch-value-data.component';
-import { FetchPriceDataComponent } from './components/fetch-price-data/fetch-price-data.component';
-import { FetchHealthDataComponent } from './components/fetch-health-data/fetch-health-data.component';
 import { FetchMarketDataMatTableComponent } from './components/fetch-market-data-mat-table/fetch-market-data-mat-table.component';
 import { ConfigService } from './services/config.service';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -45,12 +43,11 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-price-data-mat-table', component: FetchPriceDataMatTableComponent },
-  { path: 'fetch-price-data', component: FetchPriceDataComponent },
   { path: 'fetch-value-data', component: FetchValueDataComponent },
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
   { path: 'market-grid', component: MarketGridComponent },
-  { path: 'health', component: FetchHealthDataComponent }];
+  { path: 'fetch-health-data-mat-table', component: FetchMarketDataMatTableComponent }];
 
 @NgModule({
   declarations: [
@@ -61,8 +58,7 @@ const appRoutes: Routes = [
     FetchMarketDataComponent,
     FetchValueDataComponent,
     VersionComponent,
-    FetchHealthDataComponent,
-    FetchPriceDataComponent,
+    FetchMarketDataMatTableComponent,
     MarketGridComponent,
     MatTableComponent,
     FetchMarketDataMatTableComponent,
