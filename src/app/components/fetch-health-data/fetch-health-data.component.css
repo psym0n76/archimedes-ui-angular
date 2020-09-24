@@ -1,8 +1,14 @@
+table {
+    width: 100%;
+  }
+  .mat-header-cell{
+    font-size: 13pt;
+    font-weight: bolder;
+    text-align: left;
+  }
+  
+  .make-gold {
+      background-color: lightcoral
+  }
 
-.red {
-    color: red; 
-}
-
-.black {
-    color: black;
-}
+  .gray { background-color: #f5f5f5 }

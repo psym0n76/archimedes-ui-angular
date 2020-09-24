@@ -11,14 +11,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FetchHealthDataComponent implements OnInit {
 
-  public healthUrls: Health[];
+  public dataSource: Health[];
+  public displayedColumns: string[] = ['appName', 'url', 'version', 'status', 'lastUpdated'];
   constructor(private healthService: HealthService, private toastr: ToastrService, private handler: AppError) {}
 
   ngOnInit(): any {
     this.healthService
       .getHealth()
       .subscribe((response: Health[]) => {
-        this.healthUrls = response;
+        this.dataSource = response;
         this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); });
   }
 }

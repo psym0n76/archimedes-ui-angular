@@ -13,5 +13,5 @@ export interface Price
     askClose: number;
 
     tickQty: number;
-    timestamp: Date;
+    timeStamp: Date;
 }
