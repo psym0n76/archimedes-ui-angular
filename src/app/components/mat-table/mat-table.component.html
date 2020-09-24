@@ -15,10 +15,11 @@
           </ng-container>
   
           <tr mat-header-row *matHeaderRowDef="tableCols"></tr>
-          <tr mat-row *matRowDef="let row; columns: tableCols"></tr>
+          <tr mat-row [ngClass]="{gray: even}" *matRowDef="let row; let even = even; columns: tableCols;" ></tr>
+          <!-- <tr mat-row *matRowDef="let row; columns: tableCols"></tr> -->
         </table>
   
-        <mat-paginator [pageSizeOptions]="[1, 10, 20]" showFirstLastButtons></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
       </div>
     </div>
   </div>

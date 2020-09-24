@@ -2,11 +2,13 @@ table {
     width: 100%;
   }
   .mat-header-cell{
-    font-size: 12pt;
-    font-weight: bold;
-    text-align: left
+    font-size: 13pt;
+    font-weight: bolder;
+    text-align: left;
   }
   
   .make-gold {
-      background-color: gold
+      background-color: lightgreen
   }
+
+  .gray { background-color: #f5f5f5 }

@@ -28,7 +28,6 @@ import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgGridModule } from 'ag-grid-angular';
-import { GridComponent } from './components/grid/grid.component';
 import { MarketGridComponent } from './components/market-grid/market-grid.component';
 import { MatTableComponent } from './components/mat-table/mat-table.component';
 
@@ -55,8 +54,7 @@ const appRoutes: Routes = [
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'data-mat-table', component: DataMatTableComponent },
   { path: 'market-grid', component: MarketGridComponent },
-  { path: 'health', component: FetchHealthDataComponent },
-  { path: 'grid', component: GridComponent }];
+  { path: 'health', component: FetchHealthDataComponent }];
 
 @NgModule({
   declarations: [
@@ -68,7 +66,6 @@ const appRoutes: Routes = [
     FetchValueDataComponent,
     VersionComponent,
     FetchHealthDataComponent,
-    GridComponent,
     FetchCandleDataComponent,
     FetchPriceDataComponent,
     MarketGridComponent,
