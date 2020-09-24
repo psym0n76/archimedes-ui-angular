@@ -2,42 +2,19 @@
 
 <p>This component demonstrates using Signal R to broadcast data.</p>
 
-<p *ngIf="!valueForecasts"><em>Loading...</em></p>
+<p *ngIf="!markets"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="valueForecasts">
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="markets">
   <thead>
   <tr>
-    <th>Date</th>
-    <th>Temp. (C)</th>
-    <th>Temp. (F)</th>
-    <th>Summary</th>
+    <th>Name</th>
+    <th>Interval</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let forecast of valueForecasts">
-    <td>{{ forecast }}</td>
-    <td>{{ forecast }}</td>
-    <td>{{ forecast }}</td>
-    <td>{{ forecast }}</td>
-  </tr>
-  </tbody>
-</table>
-
-<table class='table table-striped' aria-labelledby="tableLabel">
-  <thead>
-  <tr>
-    <th>Balham</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><ag-grid-angular
-      #agGrid
-      style="width: 900px; height: 200px;"
-      class="ag-theme-balham"
-      [rowData]="rowMarketValueData"
-      [columnDefs]="columnMarketValueDefs">
-  </ag-grid-angular></td>
+  <tr *ngFor="let market of markets">
+    <td>{{ market.name }}</td>
+    <td>{{ market.interval }}</td>
   </tr>
   </tbody>
 </table>

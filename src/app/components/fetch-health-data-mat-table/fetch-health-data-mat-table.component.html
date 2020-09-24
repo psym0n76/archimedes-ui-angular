@@ -1,6 +1,7 @@
 <h4>Health Check</h4>
 
-<p *ngIf="!dataSource"><em>Loading...</em></p>
+<p *ngIf="!dataSource"><mat-spinner></mat-spinner></p>
+  <!-- <p *ngIf="!dataSource"><em>Loading...</em></p> -->
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-bottom: 12px;">
   

@@ -1,11 +1,10 @@
+import { Market } from './../../models/market';
 import { AppError } from './../../models/app-error';
 import { ToastrService } from 'ngx-toastr';
-import {AgGridAngular} from 'ag-grid-angular';
 import { ValuesService } from './../../services/values.service';
 import { ConfigService } from './../../services/config.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
-
 
 @Component({
   selector: 'app-value',
@@ -13,45 +12,29 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 })
 export class FetchValueDataComponent implements OnInit  {
 
-  valueForecasts: string[] = [];
+  markets: Market[] = [];
   hubConnection: HubConnection;
-
-  columnMarketValueDefs: any = [];
-  rowMarketValueData: any = [] ;
 
   constructor(private configService: ConfigService, private service: ValuesService,
               private toastr: ToastrService, private handler: AppError){}
 
-initialLoad(): void {
+ngOnInit(): void {
 
+  this.service.getValues().subscribe((result: Market[]) => {
+    this.markets = result;
+    this.toastr.success('Successfully uploaded data'); }, error => {this.handler.logError(error); });
 
-  this.columnMarketValueDefs = [
-    {headerName: 'forecast' , field: 'forecast'},
-];
+  console.log('Calling: ' + this.configService.userInterfaceBaseUrl + ' for Hubs/Values');
 
-
-  console.log('Initial load of fetch-data-value');
-  this.service.getValues()
-      .subscribe((result: string[]) => {
-        this.valueForecasts = result;
-        this.toastr.success('Successfully uploaded data'); }, error => {this.handler.logError(error) ; });
-}
-
-  ngOnInit(): void {
-
-    this.initialLoad();
-
-    console.log('Calling: ' + this.configService.userInterfaceBaseUrl + ' for Hubs/Values');
-
-    this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl + '/Hubs/Values').build();
-    this.hubConnection
+  this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl + '/Hubs/Values').build();
+  this.hubConnection
       .start()
       .then(() => this.toastr.success('Connection started on ' + this.configService.userInterfaceBaseUrl + '/Hubs/Values'))
       .catch(err => console.log('Error while establishing connection : ('));
 
-    this.hubConnection.on('Add',
-      (type: string) => {
-        this.valueForecasts.push(type);
+  this.hubConnection.on('Add',
+      (type: Market) => {
+        this.markets.push(type);
         this.toastr.success('Message Received [' + type  + '] from ' + this.configService.userInterfaceBaseUrl);
       });
   }

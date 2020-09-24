@@ -32,6 +32,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FetchCandleDataMatTableComponent } from './components/fetch-candle-data-mat-table/fetch-candle-data-mat-table.component';
 import { FetchPriceDataMatTableComponent } from './components/fetch-price-data-mat-table/fetch-price-data-mat-table.component';
+import { FetchHealthDataMatTableComponent } from './components/fetch-health-data-mat-table/fetch-health-data-mat-table.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
   { path: 'market-grid', component: MarketGridComponent },
-  { path: 'fetch-health-data-mat-table', component: FetchMarketDataMatTableComponent }];
+  { path: 'fetch-health-data-mat-table', component: FetchHealthDataMatTableComponent }];
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ const appRoutes: Routes = [
     FetchMarketDataMatTableComponent,
     MarketGridComponent,
     MatTableComponent,
-    FetchMarketDataMatTableComponent,
+    FetchHealthDataMatTableComponent,
     FetchCandleDataMatTableComponent,
     FetchPriceDataMatTableComponent
   ],

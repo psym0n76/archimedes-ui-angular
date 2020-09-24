@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-health-data',
-  templateUrl: './fetch-health-data.component.html',
-  styleUrls: ['./fetch-health-data.component.css']
+  selector: 'app-health-data-mat-table',
+  templateUrl: './fetch-health-data-mat-table.component.html',
+  styleUrls: ['./fetch-health-data-mat-table.component.css']
 })
-export class FetchHealthDataComponent implements OnInit {
+export class FetchHealthDataMatTableComponent implements OnInit {
 
   public dataSource: Health[];
   public displayedColumns: string[] = ['appName', 'url', 'version', 'status', 'lastUpdated'];
