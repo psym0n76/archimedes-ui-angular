@@ -1,6 +1,5 @@
 import { CandleService } from './services/candle.service';
 import { PriceService } from './services/price.service';
-import { AppError } from './models/app-error';
 import { ErrorIntercept } from './error.interceptor';
 import { MarketService } from './services/market.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,9 +34,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DataMatTableComponent } from './components/data-mat-table/data-mat-table.component';
-
-
-
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
