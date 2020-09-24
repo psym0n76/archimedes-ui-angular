@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let url of healthUrls">
-      <td ng-class='{red : url.statusMessage = "OK", black: !list.statusMessage = "OK"}'>{{list.value}}</td>
+      <!-- <td ng-class='{red : url.statusMessage = "OK", black: !list.statusMessage = "OK"}'>{{list.value}}</td> -->
       <td>{{ url.appName }}</td>
       <td>{{ url.url }}</td>
       <td>{{ url.version }}</td>

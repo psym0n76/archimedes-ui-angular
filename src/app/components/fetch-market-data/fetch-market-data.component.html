@@ -12,10 +12,10 @@
       <th>TimeFrame</th>
       <th>Active</th>
       <th>Max Date</th>
-      <th>Last Updated</th>
       <th>TimeFrame Interval</th>
       <th>Broker Time Min Interval</th>
       <th>Broker Time Interval</th>
+      <th>Last Updated</th>
     </tr>
   </thead>
   <tbody>
@@ -24,11 +24,11 @@
       <td>{{ market.interval }}</td>
       <td>{{ market.timeFrame }}</td>
       <td>{{ market.active }}</td>
-      <td>{{ market.maxDate }}</td>
-      <td>{{ market.lastUpdated }}</td>
+      <td>{{ market.maxDate | date }}</td>
       <td>{{ market.timeFrameInterval }}</td>
       <td>{{ market.brokerTimeMinInterval }}</td>
       <td>{{ market.brokerTimeInterval }}</td>
+      <td>{{ market.lastUpdated }}</td>
     </tr>
   </tbody>
 </table>

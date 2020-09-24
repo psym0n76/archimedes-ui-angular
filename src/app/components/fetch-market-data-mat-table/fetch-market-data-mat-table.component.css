@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+  }
+  .mat-header-cell{
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: left
+  }
+  
+  .make-gold {
+      background-color: gold
+  }
