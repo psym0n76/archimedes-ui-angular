@@ -33,7 +33,7 @@ import { MatTableComponent } from './components/mat-table/mat-table.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DataMatTableComponent } from './components/data-mat-table/data-mat-table.component';
+import { FetchCandleDataMatTableComponent } from './components/fetch-candle-data-mat-table/fetch-candle-data-mat-table.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
   { path: 'fetch-price-data', component: FetchPriceDataComponent },
   { path: 'fetch-value-data', component: FetchValueDataComponent },
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
-  { path: 'data-mat-table', component: DataMatTableComponent },
+  { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
   { path: 'market-grid', component: MarketGridComponent },
   { path: 'health', component: FetchHealthDataComponent }];
 
@@ -66,8 +66,8 @@ const appRoutes: Routes = [
     FetchPriceDataComponent,
     MarketGridComponent,
     MatTableComponent,
-    DataMatTableComponent,
-    FetchMarketDataMatTableComponent
+    FetchMarketDataMatTableComponent,
+    FetchCandleDataMatTableComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,6 +1,7 @@
 export interface Candle
 {
     market: string;
+    marketId: number;
     granularity: string;
     dateFrom: Date;
     dateTo: Date;
@@ -16,5 +17,5 @@ export interface Candle
     askClose: number;
 
     tickQty: number;
-    timestamp: Date;
+    timeStamp: Date;
 }
