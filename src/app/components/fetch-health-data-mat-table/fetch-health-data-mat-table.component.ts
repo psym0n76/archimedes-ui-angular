@@ -1,8 +1,10 @@
 import { Health } from '../../models/health';
 import { AppError } from '../../models/app-error';
 import { HealthService } from '../../services/health.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-health-data-mat-table',
@@ -11,6 +13,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FetchHealthDataMatTableComponent implements OnInit {
 
+  hubConnection: HubConnection;
+
+  @ViewChild(MatTable) table: MatTable<any>;
   public dataSource: Health[];
   public displayedColumns: string[] = ['appName', 'url', 'version', 'status', 'lastUpdated'];
   constructor(private healthService: HealthService, private toastr: ToastrService, private handler: AppError) {}
@@ -21,5 +26,31 @@ export class FetchHealthDataMatTableComponent implements OnInit {
       .subscribe((response: Health[]) => {
         this.dataSource = response;
         this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); });
+
+    this.hubConnection = new HubConnectionBuilder().withUrl('	http://health-service.dev.archimedes.com/Hubs/Health').build();
+    this.hubConnection
+            .start()
+            .then(() => this.toastr.success('Connection started on ' + '' + '/Hubs/Values'))
+            .catch(err => console.log('Error while establishing connection : ('));
+
+    this.hubConnection.on('Add',
+            (type: Health) => {
+              this.dataSource.push(type);
+              this.toastr.success('Message Received [' + type  + '] from ');
+            });
+
+    this.hubConnection.on('Update',
+            (type: Health) => {
+              const index = this.dataSource.findIndex(x => x.url === type.url);
+              if (index > -1)
+              {
+                this.dataSource[index].appName = type.appName;
+                this.dataSource[index].url = type.url;
+                this.dataSource[index].version = type.version;
+                this.dataSource[index].statusMessage = type.statusMessage;
+                this.dataSource[index].lastUpdated = type.lastUpdated;
+                this.table.renderRows();
+              }
+            });
+        }
   }
-}
