@@ -30,7 +30,7 @@ export class FetchHealthDataMatTableComponent implements OnInit {
     this.hubConnection = new HubConnectionBuilder().withUrl('	http://health-service.dev.archimedes.com/Hubs/Health').build();
     this.hubConnection
             .start()
-            .then(() => this.toastr.success('Connection started on ' + '' + '/Hubs/Values'))
+            .then(() => this.toastr.success('http://health-service.dev.archimedes.com/Hubs/Health'))
             .catch(err => console.log('Error while establishing connection : ('));
 
     this.hubConnection.on('Add',
