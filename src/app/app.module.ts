@@ -17,7 +17,6 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { FetchMarketDataComponent } from './components/fetch-market-data/fetch-market-data.component';
-import { FetchValueDataComponent } from './components/fetch-value-data/fetch-value-data.component';
 import { FetchMarketDataMatTableComponent } from './components/fetch-market-data-mat-table/fetch-market-data-mat-table.component';
 import { ConfigService } from './services/config.service';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -44,7 +43,6 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-price-data-mat-table', component: FetchPriceDataMatTableComponent },
-  { path: 'fetch-value-data', component: FetchValueDataComponent },
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
   { path: 'market-grid', component: MarketGridComponent },
@@ -57,7 +55,6 @@ const appRoutes: Routes = [
     HomeComponent,
     CounterComponent,
     FetchMarketDataComponent,
-    FetchValueDataComponent,
     VersionComponent,
     FetchMarketDataMatTableComponent,
     MarketGridComponent,
