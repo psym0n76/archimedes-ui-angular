@@ -33,6 +33,7 @@ import { FetchCandleDataMatTableComponent } from './components/fetch-candle-data
 import { FetchPriceDataMatTableComponent } from './components/fetch-price-data-mat-table/fetch-price-data-mat-table.component';
 import { FetchHealthDataMatTableComponent } from './components/fetch-health-data-mat-table/fetch-health-data-mat-table.component';
 import { FetchCandleDataChartComponent } from './components/fetch-candle-data-chart/fetch-candle-data-chart.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-price-data-mat-table', component: FetchPriceDataMatTableComponent },
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
+  { path: 'fetch-candle-data-chart', component: FetchCandleDataChartComponent},
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
   { path: 'market-grid', component: MarketGridComponent },
   { path: 'fetch-health-data-mat-table', component: FetchHealthDataMatTableComponent }];
@@ -69,6 +71,7 @@ const appRoutes: Routes = [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     MatTableModule,
+    HighchartsChartModule,
     MatSortModule,
     MatPaginatorModule,
     MatFormFieldModule,

@@ -1,1 +1,5 @@
-<p>fetch-candle-data-chart works!</p>
+
+<highcharts-chart *ngIf="chartOptions"
+[Highcharts]="Highcharts"
+[options]="chartOptions"
+style="width: 75% ; height: 400px; display: block;" ></highcharts-chart>
