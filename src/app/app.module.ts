@@ -32,6 +32,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FetchCandleDataMatTableComponent } from './components/fetch-candle-data-mat-table/fetch-candle-data-mat-table.component';
 import { FetchPriceDataMatTableComponent } from './components/fetch-price-data-mat-table/fetch-price-data-mat-table.component';
 import { FetchHealthDataMatTableComponent } from './components/fetch-health-data-mat-table/fetch-health-data-mat-table.component';
+import { FetchCandleDataChartComponent } from './components/fetch-candle-data-chart/fetch-candle-data-chart.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     MatTableComponent,
     FetchHealthDataMatTableComponent,
     FetchCandleDataMatTableComponent,
-    FetchPriceDataMatTableComponent
+    FetchPriceDataMatTableComponent,
+    FetchCandleDataChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
