@@ -19,7 +19,7 @@ export class FetchCandleDataChartComponent implements OnInit {
 
   constructor(private ohlcService: OhlcService, private candleService: CandleService) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 
   Highcharts.stockChart('container', {
       rangeSelector: {
@@ -34,7 +34,7 @@ export class FetchCandleDataChartComponent implements OnInit {
           type: 'candlestick',
           name: 'GBP/USD',
           // data: this.ohlcService.getOhlcData(),
-          data: this.candleService.getCandleOhlc(),
+          data: await this.candleService.getCandleOhlc(),
           dataGrouping: {
               units: [
                   [
