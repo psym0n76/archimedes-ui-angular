@@ -1,7 +1,8 @@
+import { CandleService } from 'src/app/services/candle.service';
+import { OhlcService } from './../../services/ohlc.service';
 import { Candle } from './../../models/candle';
 import { Component, OnInit } from '@angular/core';
-import * as Highcharts from 'highcharts';
-import { CandleService } from 'src/app/services/candle.service';
+import * as Highcharts from 'highcharts/highstock';
 
 @Component({
   selector: 'app-fetch-candle-data-chart',
@@ -16,30 +17,36 @@ export class FetchCandleDataChartComponent implements OnInit {
   chardata: any[] = [];
   chartOptions: any;
 
-  constructor(private candleService: CandleService) {}
+  constructor(private ohlcService: OhlcService, private candleService: CandleService) {}
 
   ngOnInit(): void {
-    this.candleService.getCandle().subscribe((assets) => {
-      this.items$ = assets;
-      if (this.items$) {
-        this.items$.forEach((element) => {
-          this.chardata.push(element.askClose);
-        });
-        this.getChart();
-      }
-    });
-  }
-  getChart(): void {
-    this.chartOptions = {
-      series: [{
-        data: this.chardata,
-      }, ],
-      chart: {
-        type: 'bar',
+
+  Highcharts.stockChart('container', {
+      rangeSelector: {
+          selected: 1
       },
+
       title: {
-        text: 'barchart',
+          text: 'GBP/USD 5 Min'
       },
-    };
-  }
+
+      series: [{
+          type: 'candlestick',
+          name: 'GBP/USD',
+          // data: this.ohlcService.getOhlcData(),
+          data: this.candleService.getCandleOhlc(),
+          dataGrouping: {
+              units: [
+                  [
+                      'week', // unit name
+                      [1] // allowed multiples
+                  ], [
+                      'month',
+                      [1, 2, 3, 4, 6]
+                  ]
+              ]
+          }
+      }]
+  });
+}
 }
