@@ -22,14 +22,14 @@
           <td mat-cell *matCellDef="let element"> {{element.granularity}} </td>
         </ng-container>
     
-        <ng-container matColumnDef="dateFrom">
+        <ng-container matColumnDef="fromDate">
             <th mat-header-cell *matHeaderCellDef> Date From </th>
-            <td mat-cell *matCellDef="let element"> {{element.dateFrom | date:"long"}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.fromDate | date:"dd-MM-yyyy hh:mm:ss" }} </td>
         </ng-container>
     
-        <ng-container matColumnDef="dateTo">
+        <ng-container matColumnDef="toDate">
             <th mat-header-cell *matHeaderCellDef > Date To </th>
-            <td mat-cell *matCellDef="let element"> {{element.dateTo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.toDate | date:"dd-MM-yyyy hh:mm:ss" }} </td>
         </ng-container>
     
         <ng-container matColumnDef="bidOpen">

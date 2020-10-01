@@ -19,7 +19,7 @@ export class FetchCandleDataMatTableComponent implements OnInit {
 
   constructor(private candleService: CandleService, private toastr: ToastrService, private handler: AppError) { }
 
-  public displayedColumns: string[] = ['market', 'granularity', 'dateFrom', 'dateTo', 'bidOpen', 'bidHigh', 'bidLow', 'bidClose'];
+  public displayedColumns: string[] = ['market', 'granularity', 'fromDate', 'toDate', 'bidOpen', 'bidHigh', 'bidLow', 'bidClose'];
   public dataSource: any;
 
   ngOnInit(): void {

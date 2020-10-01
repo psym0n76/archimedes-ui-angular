@@ -3,8 +3,8 @@ export interface Candle
     market: string;
     marketId: number;
     granularity: string;
-    dateFrom: Date;
-    dateTo: Date;
+    fromDate: Date;
+    toDate: Date;
 
     bidOpen: number;
     bidHigh: number;
