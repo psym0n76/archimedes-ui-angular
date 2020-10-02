@@ -13,6 +13,7 @@ import { CandleService } from 'src/app/services/candle.service';
   styleUrls: ['./fetch-candle-data-mat-table.component.css']
 })
 export class FetchCandleDataMatTableComponent implements OnInit {
+  
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
