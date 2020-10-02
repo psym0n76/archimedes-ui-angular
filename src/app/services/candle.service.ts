@@ -31,7 +31,6 @@ export class CandleService {
       dataItem.low = item.bidLow;
       dataItem.open = item.bidOpen;
       dataItem.x = new Date(item.timeStamp).valueOf();
-      console.log(item);
       data.push(dataItem);
     });
 

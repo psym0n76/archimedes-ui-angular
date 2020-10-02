@@ -35,17 +35,7 @@ export class FetchCandleDataChartComponent implements OnInit {
           name: 'GBP/USD',
           // data: this.ohlcService.getOhlcData(),
           data: await this.candleService.getCandleOhlc(),
-          dataGrouping: {
-              units: [
-                  [
-                      'week', // unit name
-                      [1] // allowed multiples
-                  ], [
-                      'month',
-                      [1, 2, 3, 4, 6]
-                  ]
-              ]
-          }
+          dataGrouping: {}
       }]
   });
 }
