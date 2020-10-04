@@ -1,5 +1,4 @@
 import { CandleService } from 'src/app/services/candle.service';
-import { OhlcService } from './../../services/ohlc.service';
 import { Candle } from './../../models/candle';
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts/highstock';
@@ -17,7 +16,7 @@ export class FetchCandleDataChartComponent implements OnInit {
   chardata: any[] = [];
   chartOptions: any;
 
-  constructor(private ohlcService: OhlcService, private candleService: CandleService) {}
+  constructor(private candleService: CandleService) {}
 
   async ngOnInit(): Promise<void> {
 
@@ -33,7 +32,6 @@ export class FetchCandleDataChartComponent implements OnInit {
       series: [{
           type: 'candlestick',
           name: 'GBP/USD',
-          // data: this.ohlcService.getOhlcData(),
           data: await this.candleService.getCandleOhlc(),
           dataGrouping: {}
       }]

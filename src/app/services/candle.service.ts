@@ -33,8 +33,6 @@ export class CandleService {
       dataItem.x = new Date(item.timeStamp).valueOf();
       data.push(dataItem);
     });
-
-    console.log(data);
     return data;
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, MatSortable } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { AppError } from 'src/app/models/app-error';
@@ -13,7 +13,7 @@ import { CandleService } from 'src/app/services/candle.service';
   styleUrls: ['./fetch-candle-data-mat-table.component.css']
 })
 export class FetchCandleDataMatTableComponent implements OnInit {
-  
+
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -28,6 +28,7 @@ export class FetchCandleDataMatTableComponent implements OnInit {
     .getCandle()
     .subscribe((response: Candle[]) => {
       this.dataSource = new MatTableDataSource(response);
+      this.sort.sort(({id: 'fromDate', start: 'desc'}) as MatSortable);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
 
