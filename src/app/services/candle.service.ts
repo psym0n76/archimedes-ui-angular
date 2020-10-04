@@ -19,10 +19,11 @@ export class CandleService {
     return this.http.get<Candle[]>(this.configService.userInterfaceBaseUrl + '/api/candle');
   }
 
-  async getCandleOhlc(): Promise<OHLC[]>{
+  async getCandleOhlc(market: string, granularity: string): Promise<OHLC[]>{
 
     const data: OHLC[] = [];
-    const candles = await this.http.get <Candle[]>(this.configService.userInterfaceBaseUrl + '/api/candle').toPromise();
+    const candles = await this.http.get <Candle[]>(this.configService.userInterfaceBaseUrl +
+       '/api/candle/bymarket_bygranularity?market=' + market + '&granularity=' + granularity).toPromise();
 
     candles.forEach(item => {
       const dataItem = {} as OHLC;

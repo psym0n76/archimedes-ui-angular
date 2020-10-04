@@ -6,4 +6,7 @@ style="width: 75% ; height: 400px; display: block;" ></highcharts-chart> -->
 
 <p>This chart displays current pricing data in the Candle format</p>
 
+<app-fetch-candle-data-chart-granularity-dropdown></app-fetch-candle-data-chart-granularity-dropdown>
+<button mat-raised-button (click)="refreshdata()">Basic</button>
+<!-- <button class="btn btn-primary" (click)="incrementCounter()">Increment</button> -->
 <div id="container" style="height: 600px; min-width: 310px"></div>

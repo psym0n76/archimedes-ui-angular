@@ -26,6 +26,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { MarketGridComponent } from './components/market-grid/market-grid.component';
 import { MatTableComponent } from './components/mat-table/mat-table.component';
 
+import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -34,6 +35,7 @@ import { FetchPriceDataMatTableComponent } from './components/fetch-price-data-m
 import { FetchHealthDataMatTableComponent } from './components/fetch-health-data-mat-table/fetch-health-data-mat-table.component';
 import { FetchCandleDataChartComponent } from './components/fetch-candle-data-chart/fetch-candle-data-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { FetchCandleDataChartGranularityDropdownComponent } from './components/fetch-candle-data-chart-granularity-dropdown/fetch-candle-data-chart-granularity-dropdown.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -65,7 +67,8 @@ const appRoutes: Routes = [
     FetchHealthDataMatTableComponent,
     FetchCandleDataMatTableComponent,
     FetchPriceDataMatTableComponent,
-    FetchCandleDataChartComponent
+    FetchCandleDataChartComponent,
+    FetchCandleDataChartGranularityDropdownComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -75,6 +78,7 @@ const appRoutes: Routes = [
     MatSortModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatSelectModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,

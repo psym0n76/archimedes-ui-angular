@@ -1,0 +1,10 @@
+
+<mat-form-field appearance="fill">
+  <mat-label>Granularity</mat-label>
+    <mat-select (selectionChange)="selectionChange($event)">
+      <!-- <mat-select [(ngModel)]="selectedItem" (ngModelChange)="selectionChange(selectedItem)"> -->
+    <mat-option *ngFor="let gran of granularities" [value]="gran">
+      {{gran}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

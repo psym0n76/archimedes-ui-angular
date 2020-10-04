@@ -17,4 +17,18 @@ export class MarketService {
 
     return this.http.get<Market[]>(this.configService.userInterfaceBaseUrl + '/api/market');
   }
+
+  getMarketDistinct(): Observable<string[]> {
+
+    console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/market/bymarket_distinct for market data');
+    return this.http.get<string[]>(this.configService.userInterfaceBaseUrl + '/api/market/bymarket_distinct');
+  }
+
+  getGranularityDistinct(): Observable<string[]> {
+
+    console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/market/bymarket_distinct for market data');
+    return this.http.get<string[]>(this.configService.userInterfaceBaseUrl + '/api/market/bygranularity_distinct');
+  }
+
+
 }

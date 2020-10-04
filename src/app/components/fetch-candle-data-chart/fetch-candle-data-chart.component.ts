@@ -1,6 +1,6 @@
 import { CandleService } from 'src/app/services/candle.service';
 import { Candle } from './../../models/candle';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts/highstock';
 
 @Component({
@@ -9,6 +9,8 @@ import * as Highcharts from 'highcharts/highstock';
   styleUrls: ['./fetch-candle-data-chart.component.css']
 })
 export class FetchCandleDataChartComponent implements OnInit {
+
+  @Input() selectedGranularity: string;
 
   title = 'Firestore-Angular-Highcharts';
   items$: Candle[];
@@ -20,21 +22,34 @@ export class FetchCandleDataChartComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-  Highcharts.stockChart('container', {
-      rangeSelector: {
-          selected: 1
-      },
-
-      title: {
-          text: 'GBP/USD 5 Min'
-      },
-
-      series: [{
-          type: 'candlestick',
-          name: 'GBP/USD',
-          data: await this.candleService.getCandleOhlc(),
-          dataGrouping: {}
-      }]
-  });
+  this.refreshChart('GBP/USD', '5Min');
 }
+
+async refreshChart(market: string, granularity: string): Promise<void> {
+  Highcharts.stockChart('container', {
+    rangeSelector: {
+        selected: 1
+    },
+
+    title: {
+        text: market + ' ' +  granularity
+    },
+
+    series: [{
+        type: 'candlestick',
+        name: market,
+        data: await this.candleService.getCandleOhlc(market, granularity),
+        dataGrouping: {}
+    }]
+});
+}
+
+
+  refreshdata(): void{
+    console.log('button clicked ');
+}
+
+selectionChange(ev): void {
+  console.log( 'changed lll' + ev.value);
+    }
 }
