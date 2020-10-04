@@ -35,7 +35,6 @@ import { FetchPriceDataMatTableComponent } from './components/fetch-price-data-m
 import { FetchHealthDataMatTableComponent } from './components/fetch-health-data-mat-table/fetch-health-data-mat-table.component';
 import { FetchCandleDataChartComponent } from './components/fetch-candle-data-chart/fetch-candle-data-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { FetchCandleDataChartGranularityDropdownComponent } from './components/fetch-candle-data-chart-granularity-dropdown/fetch-candle-data-chart-granularity-dropdown.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -67,8 +66,7 @@ const appRoutes: Routes = [
     FetchHealthDataMatTableComponent,
     FetchCandleDataMatTableComponent,
     FetchPriceDataMatTableComponent,
-    FetchCandleDataChartComponent,
-    FetchCandleDataChartGranularityDropdownComponent
+    FetchCandleDataChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

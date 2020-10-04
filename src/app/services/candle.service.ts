@@ -25,6 +25,8 @@ export class CandleService {
     const candles = await this.http.get <Candle[]>(this.configService.userInterfaceBaseUrl +
        '/api/candle/bymarket_bygranularity?market=' + market + '&granularity=' + granularity).toPromise();
 
+    console.log('Candle request returned ' + candles.length);
+
     candles.forEach(item => {
       const dataItem = {} as OHLC;
       dataItem.close = item.bidClose;
