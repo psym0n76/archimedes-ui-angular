@@ -1,0 +1,8 @@
+<p>dropdown-granularity works!</p>
+
+<mat-form-field appearance="fill">
+    <mat-label>Granularity</mat-label>
+      <mat-select (selectionChange)="granularityChange($event)"> 
+      <mat-option *ngFor="let gran of granularities" [value]="gran">{{gran}}</mat-option>
+     </mat-select> 
+  </mat-form-field>

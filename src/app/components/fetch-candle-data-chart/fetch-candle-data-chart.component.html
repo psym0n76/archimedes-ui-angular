@@ -6,15 +6,7 @@ style="width: 75% ; height: 400px; display: block;" ></highcharts-chart> -->
 
 <p>This chart displays current pricing data in the Candle format</p>
 
-<mat-form-field appearance="fill">
-    <mat-label>Granularity</mat-label>
-      <mat-select (selectionChange)="marketSelectionChange($event)">
-        <!-- <mat-select [(ngModel)]="selectedItem" (ngModelChange)="selectionChange(selectedItem)"> -->
-      <mat-option *ngFor="let gran of granularities" [value]="gran">
-        {{gran}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<app-dropdown-granularity [granularity]="granularity" (changeGranularity)="onGranularityChange($event)"> </app-dropdown-granularity>
 
 <!-- <button mat-raised-button (click)="refreshdata()">Basic</button> -->
 <!-- <button class="btn btn-primary" (click)="incrementCounter()">Increment</button> -->

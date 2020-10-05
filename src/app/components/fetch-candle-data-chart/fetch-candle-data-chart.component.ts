@@ -1,10 +1,6 @@
 import { CandleService } from 'src/app/services/candle.service';
-import { Candle } from './../../models/candle';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts/highstock';
-import { MarketService } from 'src/app/services/market.service';
-import { ToastrService } from 'ngx-toastr';
-import { AppError } from 'src/app/models/app-error';
 
 @Component({
   selector: 'app-fetch-candle-data-chart',
@@ -13,62 +9,40 @@ import { AppError } from 'src/app/models/app-error';
 })
 export class FetchCandleDataChartComponent implements OnInit {
 
-  @Input() selectedGranularity: string;
-
-  title = 'Firestore-Angular-Highcharts';
-  items$: Candle[];
   Highcharts: typeof Highcharts = Highcharts;
-  chardata: any[] = [];
-  chartOptions: any;
-  granularities: string[];
   market = 'GBP/USD';
-  granularity: '5Min';
+  granularity = '5Min';
 
-  constructor(private candleService: CandleService, private marketService: MarketService,
-              private toastr: ToastrService, private handler: AppError) {}
+  constructor(private candleService: CandleService) {}
 
-  async ngOnInit(): Promise<void> {
+   ngOnInit(): void {
 
-  this.refreshMarkets();
-  this.refreshChart('GBP/USD', '5Min');
+  this.refresh();
 }
 
-async refreshChart(market: string, granularity: string): Promise<void> {
+
+async refresh(): Promise<void> {
   Highcharts.stockChart('container', {
     rangeSelector: {
         selected: 1
     },
 
     title: {
-        text: market + ' ' +  granularity
+        text: this.market + ' ' +  this.granularity
     },
 
     series: [{
         type: 'candlestick',
-        name: market,
-        data: await this.candleService.getCandleOhlc(market, granularity),
+        name: this.market,
+        data: await this.candleService.getCandleOhlc(this.market, this.granularity),
         dataGrouping: {}
     }]
 });
 }
 
-marketSelectionChange(ev): void {
-  this.granularity = ev.value;
+onGranularityChange(granularity: string): void{
+  this.granularity = granularity;
   console.log( 'Granularity change event ' + this.granularity);
-  this.refreshChart(this.market, this.granularity);
-    }
-
-refreshMarkets(): void{
-    this.marketService
-    .getGranularityDistinct()
-    .subscribe((response: string[]) => {
-      this.granularities = response;
-      this.toastr.success('Successfully uploaded data'); }, error => {this.handler.logError(error);
-    });
-  }
-
-
-refreshdata(): void{
-    console.log('button clicked this is not used');
+  this.refresh();
 }
 }
