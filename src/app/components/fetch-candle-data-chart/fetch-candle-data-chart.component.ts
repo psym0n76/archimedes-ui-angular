@@ -45,4 +45,10 @@ onGranularityChange(granularity: string): void{
   console.log( 'Granularity change event ' + this.granularity);
   this.refresh();
 }
+
+onMarketChange(market: string): void{
+  this.market = market;
+  console.log( 'Market change event ' + this.market);
+  this.refresh();
+}
 }

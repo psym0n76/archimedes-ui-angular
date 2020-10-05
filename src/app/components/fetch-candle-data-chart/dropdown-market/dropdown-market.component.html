@@ -1,0 +1,7 @@
+
+<mat-form-field appearance="fill">
+    <mat-label>Market</mat-label>
+      <mat-select (selectionChange)="marketChange($event)"> 
+      <mat-option *ngFor="let market of markets" [value]="market">{{market}}</mat-option>
+     </mat-select> 
+  </mat-form-field>
