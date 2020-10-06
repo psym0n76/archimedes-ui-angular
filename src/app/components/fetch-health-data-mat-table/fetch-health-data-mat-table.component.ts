@@ -36,7 +36,6 @@ export class FetchHealthDataMatTableComponent implements OnInit {
     this.hubConnection.on('Add',
             (type: Health) => {
               this.dataSource.push(type);
-              this.toastr.success('Message Received [' + type  + '] from ');
             });
 
     this.hubConnection.on('Update',
