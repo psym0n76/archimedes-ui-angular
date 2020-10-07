@@ -22,7 +22,7 @@ export class MarketGridComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getData();
+
 
     this.columnMarketDefs = [
         {headerName: 'Market', field: 'name', sortable: true, filter: true, checkboxSelection: true , width: 125},
@@ -33,6 +33,8 @@ export class MarketGridComponent implements OnInit {
         {headerName: 'Granularity', field: 'timeFrameInterval', sortable: true, filter: true, width: 130},
         {headerName: 'Updated', field: 'lastUpdated', sortable: true, filter: true, width: 200}
     ];
+
+    this.getData();
   }
 
 getData(): void {
