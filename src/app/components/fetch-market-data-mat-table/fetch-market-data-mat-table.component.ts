@@ -14,7 +14,7 @@ export class FetchMarketDataMatTableComponent implements OnInit {
 constructor(private marketService: MarketService, private toastr: ToastrService, private handler: AppError) { }
 
 public dataSource: Market[];
-public displayedColumns: string[] = ['name', 'active', 'maxDate', 'timeFrameInterval', 'lastUpdated'];
+public displayedColumns: string[] = ['name', 'active', 'minDate', 'maxDate', 'quantity', 'timeFrameInterval', 'lastUpdated'];
 
 ngOnInit(): void {
     this.marketService

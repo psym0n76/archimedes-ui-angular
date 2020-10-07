@@ -24,10 +24,13 @@ export class MarketGridComponent implements OnInit {
     this.getData();
 
     this.columnMarketDefs = [
-        {headerName: 'Name', field: 'name', sortable: true, filter: true, checkboxSelection: true},
-        {headerName: 'TimeFrame', field: 'timeFrame', sortable: true, filter: true },
-        {headerName: 'Active', field: 'active', sortable: true, filter: true},
-        {headerName: 'TimeFrameInterval', field: 'timeFrameInterval', sortable: true, filter: true}
+        {headerName: 'Name', field: 'name', sortable: true, filter: true, checkboxSelection: true , width: 125},
+        {headerName: 'Active', field: 'active', sortable: true, filter: true , width: 125},
+        {headerName: 'Start Date', field: 'minDate', sortable: true, filter: true, width: 150},
+        {headerName: 'End Date', field: 'maxDate', sortable: true, filter: true, width: 150},
+        {headerName: 'Quantity', field: 'quantity', sortable: true, filter: true, width: 125},
+        {headerName: 'Granularity', field: 'timeFrameInterval', sortable: true, filter: true, width: 130},
+        {headerName: 'Updated', field: 'lastUpdated', sortable: true, filter: true, width: 200}
     ];
   }
 
