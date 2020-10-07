@@ -17,6 +17,7 @@ export class MarketGridComponent implements OnInit {
   rowMarketData: any = [] ;
 
   public markets: Market[];
+
   constructor(private marketService: MarketService, private toastr: ToastrService, private handler: AppError) { }
 
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class MarketGridComponent implements OnInit {
     this.getData();
 
     this.columnMarketDefs = [
-        {headerName: 'Name', field: 'name', sortable: true, filter: true, checkboxSelection: true , width: 125},
+        {headerName: 'Market', field: 'name', sortable: true, filter: true, checkboxSelection: true , width: 125},
         {headerName: 'Active', field: 'active', sortable: true, filter: true , width: 125},
         {headerName: 'Start Date', field: 'minDate', sortable: true, filter: true, width: 150},
         {headerName: 'End Date', field: 'maxDate', sortable: true, filter: true, width: 150},
@@ -45,7 +46,7 @@ getData(): void {
 getSelectedRows(): void  {
   const selectedNodes = this.agGrid.api.getSelectedNodes();
   const selectedData = selectedNodes.map( node => node.data );
-  const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.TimeFrame).join(', ');
-  alert(`Selected nodes: ${selectedDataStringPresentation}`);
+  const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.timeFrameInterval).join(', ');
+  this.toastr.info(`Selected nodes: ${selectedDataStringPresentation}`);
 }
 }
