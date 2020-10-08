@@ -69,7 +69,7 @@ const data = row.data as Market;
 
 this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
 this.marketService.updateMarket(data)
-                  .subscribe((response: Market) =>{
+                  .subscribe((response: Market) => {
                     this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); }); }
 
 
