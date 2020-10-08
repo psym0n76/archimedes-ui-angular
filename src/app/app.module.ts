@@ -71,6 +71,8 @@ const appRoutes: Routes = [
     FetchCandleDataChartComponent,
     DropdownGranularityComponent,
     DropdownMarketComponent
+
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -84,7 +86,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents(),
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
