@@ -30,7 +30,8 @@ export class MarketService {
     return this.http.get<string[]>(this.configService.userInterfaceBaseUrl + '/api/market/bygranularity_distinct');
   }
 
-  postMarket(market: Market): void {
-    this.http.put<Market>(this.configService.userInterfaceBaseUrl + '/api/market' , market);
+  updateMarket(market: Market): void {
+    console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/market/update_market for ' + market.name);
+    this.http.put(this.configService.userInterfaceBaseUrl + '/api/market/update_market' , market);
   }
 }

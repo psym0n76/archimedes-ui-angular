@@ -63,7 +63,7 @@ getData(): void {
 onCellValueChanged(row: any): void{
 const data = row.data as Market;
 this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
-this.marketService.postMarket(data);
+this.marketService.updateMarket(data);
 }
 
 

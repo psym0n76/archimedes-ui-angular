@@ -5,26 +5,25 @@
 <p *ngIf="!rowMarketData"><em>Loading...</em></p>
 <br>
 
-<button (click)="getSelectedRows()">Get Selected Rows</button>
+<!-- <button (click)="getSelectedRows()">Get Selected Rows</button> -->
 
 <table class='table table-striped' aria-labelledby="tableLabel">
     <thead>
     <tr>
-      <th>Balham</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
     <tr>
       <td><ag-grid-angular
         #agGrid
-        style="width: 100%; height: 200px;"
+        style="width: 100%; height: 250px;"
         class="ag-theme-balham"
         [rowData]="rowMarketData"
         [columnDefs]="columnMarketDefs"
         [defaultColDef]="defaultColDef"
         (cellValueChanged)="onCellValueChanged($event)"
         (gridReady)="onGridReady($event)">
-    
     </ag-grid-angular></td>
     </tr>
     </tbody>
