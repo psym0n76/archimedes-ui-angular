@@ -61,10 +61,16 @@ getData(): void {
 }
 
 onCellValueChanged(row: any): void{
-const data = row.data as Market;
-this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
-this.marketService.updateMarket(data);
+
+if (row.oldValue === row.NewValue) {
+   return;
 }
+const data = row.data as Market;
+
+this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
+this.marketService.updateMarket(data)
+                  .subscribe((response: Market) =>{
+                    this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); }); }
 
 
 getSelectedRows(): void  {
