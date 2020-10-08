@@ -41,6 +41,6 @@ export class MarketService {
     };
 
     console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/market/update_market for ' + market.name);
-    return this.http.put<Market>(this.configService.userInterfaceBaseUrl + '/api/market/update_market' , market, httpOptions);
+    return this.http.post<Market>(this.configService.userInterfaceBaseUrl + '/api/market/update_market_test' , market, httpOptions);
   }
 }
