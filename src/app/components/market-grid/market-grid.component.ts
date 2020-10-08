@@ -62,7 +62,7 @@ getData(): void {
 
 onCellValueChanged(row: any): void{
 
-if (row.oldValue === row.NewValue) {
+if (row.oldValue.value === row.NewValue.value) {
    return;
 }
 const data = row.data as Market;
