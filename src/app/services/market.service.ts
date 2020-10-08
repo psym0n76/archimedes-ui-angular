@@ -3,6 +3,7 @@ import { ConfigService } from './config.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Market } from '../models/market';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,14 @@ export class MarketService {
   }
 
   updateMarket(market: Market): void {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+
     console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/market/update_market for ' + market.name);
-    this.http.put(this.configService.userInterfaceBaseUrl + '/api/market/update_market' , market);
+    this.http.put(this.configService.userInterfaceBaseUrl + '/api/market/update_market' , market, httpOptions);
   }
 }
