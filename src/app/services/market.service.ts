@@ -32,6 +32,6 @@ export class MarketService {
 
   updateMarket(market: Market): void {
     console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/market/update_market for ' + market.name);
-    this.http.put(this.configService.userInterfaceBaseUrl + '/api/market/update_market' , market);
+    this.http.put(this.configService.userInterfaceBaseUrl + '/api/market' , market);
   }
 }
