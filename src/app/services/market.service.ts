@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
 import { HttpClient } from '@angular/common/http';
@@ -31,7 +32,7 @@ export class MarketService {
     return this.http.get<string[]>(this.configService.userInterfaceBaseUrl + '/api/market/bygranularity_distinct');
   }
 
-  updateMarket(market: Market): void {
+  updateMarket(market: Market): Observable<Market> {
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -40,6 +41,6 @@ export class MarketService {
     };
 
     console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/market/update_market for ' + market.name);
-    this.http.put(this.configService.userInterfaceBaseUrl + '/api/market/update_market' , market, httpOptions);
+    return this.http.put<Market>(this.configService.userInterfaceBaseUrl + '/api/market/update_market' , market, httpOptions);
   }
 }
