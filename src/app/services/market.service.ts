@@ -1,4 +1,3 @@
-import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
 import { HttpClient } from '@angular/common/http';
@@ -16,7 +15,6 @@ export class MarketService {
   getMarket(): Observable<Market[]> {
 
     console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/market for market data');
-
     return this.http.get<Market[]>(this.configService.userInterfaceBaseUrl + '/api/market');
   }
 

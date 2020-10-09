@@ -1,3 +1,4 @@
+import { ConfigService } from './../../services/config.service';
 import { Health } from '../../models/health';
 import { AppError } from '../../models/app-error';
 import { HealthService } from '../../services/health.service';
@@ -18,7 +19,9 @@ export class FetchHealthDataMatTableComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<any>;
   public dataSource: Health[];
   public displayedColumns: string[] = ['appName', 'url', 'version', 'status', 'lastUpdated'];
-  constructor(private healthService: HealthService, private toastr: ToastrService, private handler: AppError) {}
+  
+  constructor(private healthService: HealthService, private toastr: ToastrService,
+              private handler: AppError, private configService: ConfigService) {}
 
   ngOnInit(): any {
     this.healthService
@@ -27,10 +30,11 @@ export class FetchHealthDataMatTableComponent implements OnInit {
         this.dataSource = response;
         this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); });
 
-    this.hubConnection = new HubConnectionBuilder().withUrl('	http://health-service.dev.archimedes.com/Hubs/Health').build();
+    // this.hubConnection = new HubConnectionBuilder().withUrl('	http://health-service.dev.archimedes.com/Hubs/Health').build();
+    this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/Hubs/Health').build();
     this.hubConnection
             .start()
-            .then(() => this.toastr.success('http://health-service.dev.archimedes.com/Hubs/Health'))
+            .then(() => this.toastr.success(this.configService.userInterfaceBaseUrl + '/Hubs/Health'))
             .catch(err => console.log('Error while establishing connection : ('));
 
     this.hubConnection.on('Add',
