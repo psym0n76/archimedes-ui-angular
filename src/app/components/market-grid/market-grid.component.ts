@@ -29,7 +29,7 @@ export class MarketGridComponent implements OnInit {
     this.columnMarketDefs = [
       {headerName: 'Market', field: 'name' },
       {headerName: 'Active', field: 'active', editable: true, singleClickEdit: true,
-          cellEditor: 'agSelectCellEditor', cellEditorParams: {values: ['true', 'false']}},
+          cellEditor: 'agSelectCellEditor', cellEditorParams: {values: [true, false]}},
       {headerName: 'Start Date', field: 'minDate'},
       {headerName: 'End Date', field: 'maxDate'},
       {headerName: 'Quantity', field: 'quantity'},
@@ -62,13 +62,14 @@ getData(): void {
 
 onCellValueChanged(row: any): void{
 
-// if (row.oldValue.value === row.NewValue.value) {
-//    return;
-// }
-const data = row.data as Market;
+ if (row.oldValue === row.NewValue) {
+    return;
+ }
 
-this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
-this.marketService.updateMarket(data)
+ const data = row.data as Market;
+
+ this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
+ this.marketService.updateMarket(data)
                   .subscribe((response: Market) => {
                     this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); }); }
 
