@@ -34,22 +34,22 @@
     
         <ng-container matColumnDef="bidOpen">
             <th mat-header-cell *matHeaderCellDef > Bid Open </th>
-            <td mat-cell *matCellDef="let element"> {{element.bidOpen}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.bidOpen |  number : '1.0-4'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="bidHigh">
             <th mat-header-cell *matHeaderCellDef > Bid High </th>
-            <td mat-cell *matCellDef="let element"> {{element.bidHigh}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.bidHigh | number : '1.0-4'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="bidLow">
             <th mat-header-cell *matHeaderCellDef > Bid Low </th>
-            <td mat-cell *matCellDef="let element"> {{element.bidLow}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.bidLow | number : '1.0-4'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="bidClose">
             <th mat-header-cell *matHeaderCellDef > Bid Close </th>
-            <td mat-cell *matCellDef="let element"> {{element.bidClose}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.bidClose | number : '1.0-4'}} </td>
         </ng-container>
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -19,7 +19,7 @@ export class FetchHealthDataMatTableComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<any>;
   public dataSource: Health[];
   public displayedColumns: string[] = ['appName', 'url', 'version', 'status', 'lastUpdated'];
-  
+
   constructor(private healthService: HealthService, private toastr: ToastrService,
               private handler: AppError, private configService: ConfigService) {}
 
