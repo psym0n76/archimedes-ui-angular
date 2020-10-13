@@ -30,7 +30,6 @@ export class FetchHealthDataMatTableComponent implements OnInit {
         this.dataSource = response;
         this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); });
 
-    // this.hubConnection = new HubConnectionBuilder().withUrl('	http://health-service.dev.archimedes.com/Hubs/Health').build();
     this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/Hubs/Health').build();
     this.hubConnection
             .start()
@@ -41,6 +40,12 @@ export class FetchHealthDataMatTableComponent implements OnInit {
             (type: Health) => {
               this.dataSource.push(type);
             });
+
+    this.hubConnection.onclose(() => {
+      this.toastr.info('Reconnecting: ' + this.configService.userInterfaceBaseUrl +  '/Hubs/Health');
+      setTimeout(function(): void{
+              this.hubConnection.start(); }, 3000);
+             });
 
     this.hubConnection.on('Update',
             (type: Health) => {
