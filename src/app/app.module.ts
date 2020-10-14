@@ -37,6 +37,7 @@ import { FetchCandleDataChartComponent } from './components/fetch-candle-data-ch
 import { HighchartsChartModule } from 'highcharts-angular';
 import { DropdownGranularityComponent } from './components/fetch-candle-data-chart/dropdown-granularity/dropdown-granularity.component';
 import { DropdownMarketComponent } from './components/fetch-candle-data-chart/dropdown-market/dropdown-market.component';
+import { FetchPriceLevelDataMatTableComponent } from './components/fetch-price-level-data-mat-table/fetch-price-level-data-mat-table.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-price-data-mat-table', component: FetchPriceDataMatTableComponent },
+  { path: 'fetch-price-level-data-mat-table', component: FetchPriceLevelDataMatTableComponent},
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'fetch-candle-data-chart', component: FetchCandleDataChartComponent},
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     FetchPriceDataMatTableComponent,
     FetchCandleDataChartComponent,
     DropdownGranularityComponent,
-    DropdownMarketComponent
+    DropdownMarketComponent,
+    FetchPriceLevelDataMatTableComponent
 
 
   ],
