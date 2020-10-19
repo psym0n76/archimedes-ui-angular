@@ -14,27 +14,49 @@
           <th mat-header-cell *matHeaderCellDef> Granularity </th>
           <td mat-cell *matCellDef="let element"> {{element.granularity}} </td>
         </ng-container>
-    
-        <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef > Price </th>
-            <td mat-cell *matCellDef="let element"> {{element.price |  number : '1.0-4'}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="priceRange">
-            <th mat-header-cell *matHeaderCellDef > Price Range </th>
-            <td mat-cell *matCellDef="let element"> {{element.priceRange |  number : '1.0-4'}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="timeStamp">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header > TimeStamp </th>
-            <td mat-cell *matCellDef="let element"> {{element.timeStamp | date:"dd-MM-yyyy HH:mm:ss" }} </td>
-        </ng-container>
 
         <ng-container matColumnDef="active">
             <th mat-header-cell *matHeaderCellDef > Active </th>
             <td mat-cell *matCellDef="let element"> {{element.active}} </td>
         </ng-container>
-    
+
+        <ng-container matColumnDef="tradeType">
+            <th mat-header-cell *matHeaderCellDef > Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.tradeType}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="candleType">
+            <th mat-header-cell *matHeaderCellDef > Candle Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.candleType}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="strategy">
+            <th mat-header-cell *matHeaderCellDef > Strategy </th>
+            <td mat-cell *matCellDef="let element"> {{element.strategy}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="bidPrice">
+            <th mat-header-cell *matHeaderCellDef > BidPrice </th>
+            <td mat-cell *matCellDef="let element"> {{element.bidPrice |  number : '1.0-4'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="bidPriceRange">
+            <th mat-header-cell *matHeaderCellDef > BidPrice Range </th>
+            <td mat-cell *matCellDef="let element"> {{element.bidPriceRange |  number : '1.0-4'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="askPrice">
+            <th mat-header-cell *matHeaderCellDef > AskPrice </th>
+            <td mat-cell *matCellDef="let element"> {{element.askPrice |  number : '1.0-4'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="askPriceRange">
+            <th mat-header-cell *matHeaderCellDef > AskPrice Range </th>
+            <td mat-cell *matCellDef="let element"> {{element.askPriceRange |  number : '1.0-4'}} </td>
+        </ng-container>
+
+
         <ng-container matColumnDef="lastUpdated">
             <th mat-header-cell *matHeaderCellDef > Updated </th>
             <td mat-cell *matCellDef="let element"> {{element.lastUpdated | date:"dd-MM-yyyy HH:mm:ss" }} </td>

@@ -20,7 +20,7 @@ export class FetchPriceLevelDataMatTableComponent implements OnInit {
 
   constructor(private priceLevelService: PriceLevelService, private toastr: ToastrService, private handler: AppError) { }
 
-  public displayedColumns: string[] = ['market', 'granularity', 'price', 'priceRange', 'timeStamp', 'active', 'lastUpdated'];
+  public displayedColumns: string[] = ['market', 'granularity', 'active', 'tradeType', 'candleType', 'timeStamp', 'strategy', 'bidPrice', 'bidPriceRange', 'askPrice', 'askPriceRange', 'lastUpdated'];
   public dataSource: any;
 
   ngOnInit(): void {

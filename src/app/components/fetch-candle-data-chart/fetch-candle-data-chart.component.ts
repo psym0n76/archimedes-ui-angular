@@ -35,7 +35,8 @@ async refresh(): Promise<void> {
         type: 'candlestick',
         name: this.market,
         data: await this.candleService.getCandleOhlc(this.market, this.granularity),
-        dataGrouping: {}
+        dataGrouping: {},
+        turboThreshold: 2500
     }]
 });
 }
