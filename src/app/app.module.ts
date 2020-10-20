@@ -41,6 +41,7 @@ import { DropdownGranularityComponent } from './components/fetch-candle-data-cha
 import { DropdownMarketComponent } from './components/fetch-candle-data-chart/dropdown-market/dropdown-market.component';
 import { FetchPriceLevelDataMatTableComponent } from './components/fetch-price-level-data-mat-table/fetch-price-level-data-mat-table.component';
 import { FetchStrategyDataMatTableComponent } from './components/fetch-strategy-data-mat-table/fetch-strategy-data-mat-table.component';
+import { FetchStrategyDataGridComponent } from './components/fetch-strategy-data-grid/fetch-strategy-data-grid.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
   { path: 'fetch-price-data-mat-table', component: FetchPriceDataMatTableComponent },
   { path: 'fetch-price-level-data-mat-table', component: FetchPriceLevelDataMatTableComponent},
   { path: 'fetch-strategy-data-mat-table', component: FetchStrategyDataMatTableComponent},
+  { path: 'fetch-strategy-data-grid', component: FetchStrategyDataGridComponent},
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'fetch-candle-data-chart', component: FetchCandleDataChartComponent},
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
@@ -78,7 +80,8 @@ const appRoutes: Routes = [
     DropdownGranularityComponent,
     DropdownMarketComponent,
     FetchPriceLevelDataMatTableComponent,
-    FetchStrategyDataMatTableComponent
+    FetchStrategyDataMatTableComponent,
+    FetchStrategyDataGridComponent
 
 
   ],

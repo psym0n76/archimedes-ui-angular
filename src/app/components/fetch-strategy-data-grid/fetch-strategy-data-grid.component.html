@@ -1,0 +1,31 @@
+<h4 id="tableLabel">Strategy Grid</h4>
+
+<p>This component demonstrates fetching data from the server and displaying in AG-Grid.</p>
+
+<p *ngIf="!rowStrategyData"><em>Loading...</em></p>
+<br>
+
+<!-- <button (click)="getSelectedRows()">Get Selected Rows</button> -->
+
+<table class='table table-striped' aria-labelledby="tableLabel">
+    <thead>
+    <tr>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><ag-grid-angular
+        #agGrid
+        style="width: 100%; height: 250px;"
+        class="ag-theme-balham"
+        [rowData]="rowStrategyData"
+        [columnDefs]="columnMarketDefs"
+        [defaultColDef]="defaultColDef"
+        (cellValueChanged)="onCellValueChanged($event)"
+        (gridReady)="onGridReady($event)">
+    </ag-grid-angular></td>
+    </tr>
+    </tbody>
+  </table>
+
