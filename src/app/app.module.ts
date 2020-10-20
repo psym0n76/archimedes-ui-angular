@@ -1,3 +1,5 @@
+import { StrategyService } from './services/strategy.service';
+import { PriceLevelService } from './services/price-level.service';
 import { CandleService } from './services/candle.service';
 import { PriceService } from './services/price.service';
 import { ErrorIntercept } from './error.interceptor';
@@ -38,6 +40,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { DropdownGranularityComponent } from './components/fetch-candle-data-chart/dropdown-granularity/dropdown-granularity.component';
 import { DropdownMarketComponent } from './components/fetch-candle-data-chart/dropdown-market/dropdown-market.component';
 import { FetchPriceLevelDataMatTableComponent } from './components/fetch-price-level-data-mat-table/fetch-price-level-data-mat-table.component';
+import { FetchStrategyDataMatTableComponent } from './components/fetch-strategy-data-mat-table/fetch-strategy-data-mat-table.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -50,6 +53,7 @@ const appRoutes: Routes = [
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-price-data-mat-table', component: FetchPriceDataMatTableComponent },
   { path: 'fetch-price-level-data-mat-table', component: FetchPriceLevelDataMatTableComponent},
+  { path: 'fetch-strategy-data-mat-table', component: FetchStrategyDataMatTableComponent},
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'fetch-candle-data-chart', component: FetchCandleDataChartComponent},
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
@@ -73,7 +77,8 @@ const appRoutes: Routes = [
     FetchCandleDataChartComponent,
     DropdownGranularityComponent,
     DropdownMarketComponent,
-    FetchPriceLevelDataMatTableComponent
+    FetchPriceLevelDataMatTableComponent,
+    FetchStrategyDataMatTableComponent
 
 
   ],
@@ -115,6 +120,8 @@ const appRoutes: Routes = [
     MarketService,
     PriceService,
     CandleService,
+    PriceLevelService,
+    StrategyService,
     {
       provide: LocationStrategy, useClass: HashLocationStrategy
     },
