@@ -28,12 +28,12 @@ export class MarketGridComponent implements OnInit {
 
     this.columnMarketDefs = [
       {headerName: 'Market', field: 'name' },
+      {headerName: 'Granularity', field: 'timeFrameInterval'},
       {headerName: 'Active', field: 'active', editable: true, singleClickEdit: true,
           cellEditor: 'agSelectCellEditor', cellEditorParams: {values: [true, false]}},
-      {headerName: 'Start Date', field: 'minDate'},
-      {headerName: 'End Date', field: 'maxDate'},
-      {headerName: 'Quantity', field: 'quantity'},
-      {headerName: 'Granularity', field: 'timeFrameInterval'},
+      {headerName: 'StartDate', field: 'minDate'},
+      {headerName: 'EndDate', field: 'maxDate'},
+      {headerName: 'Count', field: 'quantity'},
       {headerName: 'Updated', field: 'lastUpdated'}
   ];
 
