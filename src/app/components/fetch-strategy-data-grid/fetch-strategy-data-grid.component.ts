@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AppError } from 'src/app/models/app-error';
 import { Strategy } from 'src/app/models/strategy';
 import { StrategyService } from 'src/app/services/strategy.service';
+import { dateFormatter } from '../formatters/dateFormatters';
 
 @Component({
   selector: 'app-fetch-strategy-data-grid',
@@ -25,28 +26,30 @@ export class FetchStrategyDataGridComponent implements OnInit {
   onGridReady(e): void{
 
     this.columnMarketDefs = [
-      {headerName: 'Strategy', field: 'name' },
-      {headerName: 'Market', field: 'market' },
-      {headerName: 'Granularity', field: 'granularity'},
-      {headerName: 'Active', field: 'active', editable: true, singleClickEdit: true,
-          cellEditor: 'agSelectCellEditor', cellEditorParams: {values: [true, false]}},
-      {headerName: 'StartDate', field: 'startDate'},
-      {headerName: 'EndDate', field: 'endDate'},
-      {headerName: 'Count', field: 'quantity'},
-      {headerName: 'Updated', field: 'lastUpdated'}
+      {headerName: 'Strategy', field: 'name' , width: 150},
+      {headerName: 'Market', field: 'market' , width: 100},
+      {headerName: 'Granularity', field: 'granularity', width: 120},
+      {headerName: 'Count', field: 'quantity', width: 100},
+      {headerName: 'Active', field: 'active', editable: true, width: 89, singleClickEdit: true,
+        cellEditor: 'agSelectCellEditor', cellEditorParams: {values: [true, false]}},
+      {headerName: 'StartDate', field: 'startDate', valueFormatter: dateFormatter, width: 175},
+      {headerName: 'EndDate', field: 'endDate', valueFormatter: dateFormatter, width: 175},
+      {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, width: 175}
   ];
 
     this.defaultColDef = {
-    flex: 1,
-    minWidth: 110,
+    //flex: 1,
+    //minWidth: 110,
     sortable: true,
-    resizable: true,
+    //resizable: true,
     filter: true
   };
 
     this.getData();
 
   }
+
+
 
   ngOnInit(): void {
   }

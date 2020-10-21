@@ -14,7 +14,6 @@ import { CandleService } from 'src/app/services/candle.service';
 })
 export class FetchCandleDataMatTableComponent implements OnInit {
 
-
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 

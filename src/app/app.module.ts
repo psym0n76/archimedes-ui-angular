@@ -17,8 +17,8 @@ import { AppComponent } from './app.component';
 import { VersionComponent } from './components/version/version.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
-import { CounterComponent } from './components/counter/counter.component';
-import { FetchMarketDataComponent } from './components/fetch-market-data/fetch-market-data.component';
+// import { CounterComponent } from './components/counter/counter.component';
+// import { FetchMarketDataComponent } from './components/fetch-market-data/fetch-market-data.component';
 import { FetchMarketDataMatTableComponent } from './components/fetch-market-data-mat-table/fetch-market-data-mat-table.component';
 import { ConfigService } from './services/config.service';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -51,7 +51,6 @@ const appInitializerFn = (appConfig: ConfigurationService) => {
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'counter', component: CounterComponent },
   { path: 'fetch-price-data-mat-table', component: FetchPriceDataMatTableComponent },
   { path: 'fetch-price-level-data-mat-table', component: FetchPriceLevelDataMatTableComponent},
   { path: 'fetch-strategy-data-mat-table', component: FetchStrategyDataMatTableComponent},
@@ -67,8 +66,6 @@ const appRoutes: Routes = [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchMarketDataComponent,
     VersionComponent,
     FetchMarketDataMatTableComponent,
     MarketGridComponent,

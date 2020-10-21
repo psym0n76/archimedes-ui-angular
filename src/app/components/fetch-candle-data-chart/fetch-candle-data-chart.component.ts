@@ -20,7 +20,6 @@ export class FetchCandleDataChartComponent implements OnInit {
   this.refresh();
 }
 
-
 async refresh(): Promise<void> {
   Highcharts.stockChart('container', {
     rangeSelector: {
@@ -36,7 +35,7 @@ async refresh(): Promise<void> {
         name: this.market,
         data: await this.candleService.getCandleOhlc(this.market, this.granularity),
         dataGrouping: {},
-        turboThreshold: 2500
+        turboThreshold: 50000
     }]
 });
 }

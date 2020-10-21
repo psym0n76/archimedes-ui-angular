@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AppError } from 'src/app/models/app-error';
 import { Market } from 'src/app/models/market';
 import { MarketService } from 'src/app/services/market.service';
+import { dateFormatter } from '../formatters/dateFormatters';
 
 @Component({
   selector: 'app-market-grid',
@@ -22,6 +23,10 @@ export class MarketGridComponent implements OnInit {
 
   constructor(private marketService: MarketService, private toastr: ToastrService, private handler: AppError) { }
 
+public rowClassRules;
+
+
+
 
 
   onGridReady(e): void{
@@ -29,13 +34,19 @@ export class MarketGridComponent implements OnInit {
     this.columnMarketDefs = [
       {headerName: 'Market', field: 'name' },
       {headerName: 'Granularity', field: 'timeFrameInterval'},
+      {headerName: 'Count', field: 'quantity'},
       {headerName: 'Active', field: 'active', editable: true, singleClickEdit: true,
           cellEditor: 'agSelectCellEditor', cellEditorParams: {values: [true, false]}},
-      {headerName: 'StartDate', field: 'minDate'},
-      {headerName: 'EndDate', field: 'maxDate'},
-      {headerName: 'Count', field: 'quantity'},
-      {headerName: 'Updated', field: 'lastUpdated'}
+      {headerName: 'StartDate', field: 'minDate', valueFormatter: dateFormatter},
+      {headerName: 'EndDate', field: 'maxDate', valueFormatter: dateFormatter},
+      {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter}
   ];
+
+    this.rowClassRules = {
+    'rag-green': (params) => {
+      return params.data.active === true;
+    }};
+
 
     this.defaultColDef = {
     flex: 1,
@@ -67,6 +78,11 @@ onCellValueChanged(row: any): void{
  }
 
  const data = row.data as Market;
+
+
+
+
+ // this.agGrid.gridOptions.rowClassRules;: {'rag-green'; : 'data.active'; }
 
  this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
  this.marketService.updateMarket(data)

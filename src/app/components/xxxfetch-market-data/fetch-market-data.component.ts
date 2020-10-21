@@ -1,4 +1,4 @@
-import { Market } from './../../models/market';
+import { Market } from '../../models/market';
 import { AppError } from '../../models/app-error';
 import { MarketService } from '../../services/market.service';
 import { Component, OnInit } from '@angular/core';
