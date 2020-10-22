@@ -7,29 +7,22 @@ import { MarketService } from 'src/app/services/market.service';
 import { dateFormatter } from '../formatters/dateFormatters';
 
 @Component({
-  selector: 'app-market-grid',
-  templateUrl: './market-grid.component.html',
-  styleUrls: ['./market-grid.component.css']
+  selector: 'app-fetch-market-data-grid',
+  templateUrl: './fetch-market-data-grid.component.html',
+  styleUrls: ['./fetch-market-data-grid.component.css']
 })
-export class MarketGridComponent implements OnInit {
+export class FetchMarketDataGridComponent implements OnInit {
 
   @ViewChild('agGrid') agGrid: AgGridAngular;
   defaultColDef: any = [];
   columnMarketDefs: any = [];
   rowMarketData: any = [] ;
-
   public markets: Market[];
-  frameworkComponents;
+  // frameworkComponents;
 
-  constructor(private marketService: MarketService, private toastr: ToastrService, private handler: AppError) { }
+  constructor(private marketService: MarketService, private toastr: ToastrService, private handler: AppError) {}
 
-public rowClassRules;
-
-
-
-
-
-  onGridReady(e): void{
+  onGridReady(e): void {
 
     this.columnMarketDefs = [
       {headerName: 'Market', field: 'name' },
@@ -42,58 +35,67 @@ public rowClassRules;
       {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter}
   ];
 
-    this.rowClassRules = {
-    'rag-green': (params) => {
-      return params.data.active === true;
-    }};
-
+    this.agGrid.gridOptions.getRowStyle = (params): any => {
+      if (params.data.active === true) {
+        return { background: 'lightgreen' };
+      }
+};
 
     this.defaultColDef = {
     flex: 1,
     minWidth: 110,
+    cellClass: 'align-right',
+    enableCellChangeFlash: true,
     sortable: true,
     resizable: true,
     filter: true
-  };
+};
 
     this.getData();
+}
 
-  }
+
+
+
+
+
+
+
+
+
 
   ngOnInit(): void {
   }
 
-getData(): void {
+
+  getData(): void {
   this.marketService
       .getMarket()
       .subscribe((response: Market[]) => {
         this.rowMarketData = response;
         this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); });
-}
-
-onCellValueChanged(row: any): void{
-
- if (row.oldValue === row.NewValue) {
-    return;
- }
-
- const data = row.data as Market;
+  }
 
 
+  onCellValueChanged(row: any): void {
+    if (row.oldValue === row.NewValue) {return; }
+
+    const data = row.data as Market;
+
+    this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
+    this.marketService.updateMarket(data)
+                      .subscribe((response: Market) => {
+                    this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); });
+                      }
 
 
- // this.agGrid.gridOptions.rowClassRules;: {'rag-green'; : 'data.active'; }
-
- this.toastr.info('Cell Value changed from ' + row.oldValue + ' ' + row.newValue);
- this.marketService.updateMarket(data)
-                  .subscribe((response: Market) => {
-                    this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); }); }
 
 
-getSelectedRows(): void  {
-  const selectedNodes = this.agGrid.api.getSelectedNodes();
-  const selectedData = selectedNodes.map( node => node.data );
-  const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.timeFrameInterval).join(', ');
-  this.toastr.info(`Selected nodes: ${selectedDataStringPresentation}`);
-}
+  getSelectedRows(): void  {
+    const selectedNodes = this.agGrid.api.getSelectedNodes();
+    const selectedData = selectedNodes.map( node => node.data );
+    const selectedDataStringPresentation = selectedData.map( node => node.name + ' ' + node.timeFrameInterval).join(', ');
+    this.toastr.info(`Selected nodes: ${selectedDataStringPresentation}`);
+  }
+
 }

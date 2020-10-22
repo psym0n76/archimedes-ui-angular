@@ -1,3 +1,4 @@
+import { ConfigService } from './../../services/config.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ToastrService } from 'ngx-toastr';
@@ -5,6 +6,7 @@ import { AppError } from 'src/app/models/app-error';
 import { Strategy } from 'src/app/models/strategy';
 import { StrategyService } from 'src/app/services/strategy.service';
 import { dateFormatter } from '../formatters/dateFormatters';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 
 @Component({
   selector: 'app-fetch-strategy-data-grid',
@@ -13,6 +15,7 @@ import { dateFormatter } from '../formatters/dateFormatters';
 })
 export class FetchStrategyDataGridComponent implements OnInit {
 
+  hubConnection: HubConnection;
   @ViewChild('agGrid') agGrid: AgGridAngular;
   defaultColDef: any = [];
   columnMarketDefs: any = [];
@@ -21,7 +24,7 @@ export class FetchStrategyDataGridComponent implements OnInit {
   public strategy: Strategy[];
   frameworkComponents;
 
-  constructor(private strategyService: StrategyService, private toastr: ToastrService, private handler: AppError) { }
+  constructor(private strategyService: StrategyService, private toastr: ToastrService, private handler: AppError, private configService: ConfigService) { }
 
   onGridReady(e): void{
 
@@ -38,11 +41,9 @@ export class FetchStrategyDataGridComponent implements OnInit {
   ];
 
     this.defaultColDef = {
-    //flex: 1,
-    //minWidth: 110,
-    sortable: true,
-    //resizable: true,
-    filter: true
+      enableCellChangeFlash: true,
+      sortable: true,
+      filter: true
   };
 
     this.getData();
@@ -52,6 +53,43 @@ export class FetchStrategyDataGridComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/Hubs/Strategy').build();
+    this.hubConnection
+            .start()
+            .then(() => this.toastr.success(this.configService.userInterfaceBaseUrl + '/Hubs/Strategy'))
+            .catch(err => console.log('Error while establishing connection : ('));
+
+    this.hubConnection.onclose(() => {
+      this.toastr.info('Reconnecting: ' + this.configService.userInterfaceBaseUrl +  '/Hubs/Strategy');
+      setTimeout(function(): void{
+              this.hubConnection.start(); }, 3000);
+             });
+
+    this.hubConnection.on('Update',
+            (type: Strategy) => {
+                this.agGrid.api.forEachNode((rowNode, index): any => {
+                  if (rowNode.data.name === type.name && rowNode.data.granularity === type.granularity) {
+                    console.log('Update receieved ' + type.lastUpdated  + ' to replace ' + rowNode.data.lastUpdated);
+                    rowNode.data.startDate = type.startDate;
+                    rowNode.data.endDate = type.endDate;
+                    rowNode.data.lastUpdated = type.lastUpdated;
+                    rowNode.data.count = type.count;
+                    this.agGrid.api.refreshCells();
+                  }
+                });
+
+
+            //   if (index > -1)
+            //   {
+            //     this.dataSource[index].appName = type.appName;
+            //     this.dataSource[index].url = type.url;
+            //     this.dataSource[index].version = type.version;
+            //     this.dataSource[index].statusMessage = type.statusMessage;
+            //     this.dataSource[index].lastUpdated = type.lastUpdated;
+            //     this.table.renderRows();
+            //   }
+           });
   }
 
 getData(): void {

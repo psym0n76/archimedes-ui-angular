@@ -25,7 +25,6 @@ import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgGridModule } from 'ag-grid-angular';
-import { MarketGridComponent } from './components/market-grid/market-grid.component';
 import { MatTableComponent } from './components/mat-table/mat-table.component';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -42,6 +41,7 @@ import { DropdownMarketComponent } from './components/fetch-candle-data-chart/dr
 import { FetchPriceLevelDataMatTableComponent } from './components/fetch-price-level-data-mat-table/fetch-price-level-data-mat-table.component';
 import { FetchStrategyDataMatTableComponent } from './components/fetch-strategy-data-mat-table/fetch-strategy-data-mat-table.component';
 import { FetchStrategyDataGridComponent } from './components/fetch-strategy-data-grid/fetch-strategy-data-grid.component';
+import { FetchMarketDataGridComponent } from './components/fetch-market-data-grid/fetch-market-data-grid.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -58,7 +58,7 @@ const appRoutes: Routes = [
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'fetch-candle-data-chart', component: FetchCandleDataChartComponent},
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
-  { path: 'market-grid', component: MarketGridComponent },
+  { path: 'fetch-market-data-grid', component: FetchMarketDataGridComponent },
   { path: 'fetch-health-data-mat-table', component: FetchHealthDataMatTableComponent }];
 
 @NgModule({
@@ -68,7 +68,7 @@ const appRoutes: Routes = [
     HomeComponent,
     VersionComponent,
     FetchMarketDataMatTableComponent,
-    MarketGridComponent,
+    FetchMarketDataGridComponent,
     MatTableComponent,
     FetchHealthDataMatTableComponent,
     FetchCandleDataMatTableComponent,
