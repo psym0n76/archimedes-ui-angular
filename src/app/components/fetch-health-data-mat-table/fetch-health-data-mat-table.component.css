@@ -12,3 +12,16 @@ table {
   }
 
   .gray { background-color: #f5f5f5 }
+
+  .green-flash {
+    -webkit-animation-name: flash-animation;
+    -webkit-animation-duration: 0.3s;
+
+    animation-name: flash-animation;
+    animation-duration: 0.3s;
+}
+
+@keyframes flash-animation {  
+    from { background: none; }
+    to   { background: green; }
+}

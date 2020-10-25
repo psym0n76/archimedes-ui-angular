@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ToastrService } from 'ngx-toastr';
@@ -5,6 +6,8 @@ import { AppError } from 'src/app/models/app-error';
 import { Market } from 'src/app/models/market';
 import { MarketService } from 'src/app/services/market.service';
 import { dateFormatter } from '../formatters/dateFormatters';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-fetch-market-data-grid',
@@ -13,6 +16,7 @@ import { dateFormatter } from '../formatters/dateFormatters';
 })
 export class FetchMarketDataGridComponent implements OnInit {
 
+  hubConnection: HubConnection;
   @ViewChild('agGrid') agGrid: AgGridAngular;
   defaultColDef: any = [];
   columnMarketDefs: any = [];
@@ -20,7 +24,8 @@ export class FetchMarketDataGridComponent implements OnInit {
   public markets: Market[];
   // frameworkComponents;
 
-  constructor(private marketService: MarketService, private toastr: ToastrService, private handler: AppError) {}
+  constructor(private marketService: MarketService, private toastr: ToastrService,
+              private handler: AppError, private configService: ConfigService) {}
 
   onGridReady(e): void {
 
@@ -55,16 +60,33 @@ export class FetchMarketDataGridComponent implements OnInit {
 }
 
 
+ngOnInit(): void {
 
+  this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/Hubs/candle-metric').build();
+  this.hubConnection
+          .start()
+          .then(() => this.toastr.success(this.configService.userInterfaceBaseUrl + '/Hubs/candle-metric'))
+          .catch(err => console.log('Error while establishing connection : ('));
 
+  this.hubConnection.onclose(() => {
+    this.toastr.info('Reconnecting: ' + this.configService.userInterfaceBaseUrl +  '/Hubs/candle-metric');
+    setTimeout(function(): void{
+            this.hubConnection.start(); }, 3000);
+           });
 
-
-
-
-
-
-
-  ngOnInit(): void {
+  this.hubConnection.on('Update',
+          (type: Market) => {
+              this.agGrid.api.forEachNode((rowNode, index): any => {
+                if (rowNode.data.name === type.name && rowNode.data.granularity === type.timeFrame) {
+                  console.log('Update receieved ' + type.lastUpdated  + ' to replace ' + rowNode.data.lastUpdated);
+                  rowNode.data.startDate = type.minDate;
+                  rowNode.data.endDate = type.maxDate;
+                  rowNode.data.lastUpdated = type.lastUpdated;
+                  rowNode.data.count = type.quantity;
+                  this.agGrid.api.refreshCells();
+                }
+              });
+         });
   }
 
 

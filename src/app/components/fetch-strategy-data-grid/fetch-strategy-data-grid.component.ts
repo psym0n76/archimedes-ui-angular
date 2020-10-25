@@ -50,8 +50,6 @@ export class FetchStrategyDataGridComponent implements OnInit {
 
   }
 
-
-
   ngOnInit(): void {
 
     this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/Hubs/Strategy').build();

@@ -15,7 +15,7 @@ import { MatTable } from '@angular/material/table';
 export class FetchHealthDataMatTableComponent implements OnInit {
 
   hubConnection: HubConnection;
-
+  flashClass: any; // not working yet
   @ViewChild(MatTable) table: MatTable<any>;
   public dataSource: Health[];
   public displayedColumns: string[] = ['appName', 'url', 'version', 'status', 'lastUpdated'];
@@ -58,6 +58,9 @@ export class FetchHealthDataMatTableComponent implements OnInit {
                 this.dataSource[index].statusMessage = type.statusMessage;
                 this.dataSource[index].lastUpdated = type.lastUpdated;
                 this.table.renderRows();
+
+                // this.flashClass = {background: 'green-flash'}; // nor working yet
+
               }
             });
         }
