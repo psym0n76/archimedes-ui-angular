@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ToastrService } from 'ngx-toastr';
@@ -62,14 +61,14 @@ export class FetchMarketDataGridComponent implements OnInit {
 
 ngOnInit(): void {
 
-  this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/Hubs/candle-metric').build();
+  this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/hubs/market').build();
   this.hubConnection
           .start()
-          .then(() => this.toastr.success(this.configService.userInterfaceBaseUrl + '/Hubs/candle-metric'))
+          .then(() => this.toastr.success(this.configService.userInterfaceBaseUrl + '/hubs/market'))
           .catch(err => console.log('Error while establishing connection : ('));
 
   this.hubConnection.onclose(() => {
-    this.toastr.info('Reconnecting: ' + this.configService.userInterfaceBaseUrl +  '/Hubs/candle-metric');
+    this.toastr.info('Reconnecting: ' + this.configService.userInterfaceBaseUrl +  '/hubs/market');
     setTimeout(function(): void{
             this.hubConnection.start(); }, 3000);
            });
@@ -79,8 +78,8 @@ ngOnInit(): void {
               this.agGrid.api.forEachNode((rowNode, index): any => {
                 if (rowNode.data.name === type.name && rowNode.data.granularity === type.timeFrame) {
                   console.log('Update receieved ' + type.lastUpdated  + ' to replace ' + rowNode.data.lastUpdated);
-                  rowNode.data.startDate = type.minDate;
-                  rowNode.data.endDate = type.maxDate;
+                  rowNode.data.minDate = type.minDate;
+                  rowNode.data.maxDate = type.maxDate;
                   rowNode.data.lastUpdated = type.lastUpdated;
                   rowNode.data.count = type.quantity;
                   this.agGrid.api.refreshCells();
