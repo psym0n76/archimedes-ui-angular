@@ -76,7 +76,7 @@ ngOnInit(): void {
   this.hubConnection.on('Update',
           (type: Market) => {
               this.agGrid.api.forEachNode((rowNode, index): any => {
-                if (rowNode.data.name === type.name && rowNode.data.granularity === type.timeFrame) {
+                if (rowNode.data.name === type.name && rowNode.data.granularity === type.timeFrameInterval) {
                   console.log('Update receieved ' + type.lastUpdated  + ' to replace ' + rowNode.data.lastUpdated);
                   rowNode.data.minDate = type.minDate;
                   rowNode.data.maxDate = type.maxDate;
