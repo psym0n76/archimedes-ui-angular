@@ -42,6 +42,7 @@ import { FetchPriceLevelDataMatTableComponent } from './components/fetch-price-l
 import { FetchStrategyDataMatTableComponent } from './components/fetch-strategy-data-mat-table/fetch-strategy-data-mat-table.component';
 import { FetchStrategyDataGridComponent } from './components/fetch-strategy-data-grid/fetch-strategy-data-grid.component';
 import { FetchMarketDataGridComponent } from './components/fetch-market-data-grid/fetch-market-data-grid.component';
+import { FetchPriceLiveDataGridComponent } from './components/fetch-price-live-data-grid/fetch-price-live-data-grid.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     DropdownMarketComponent,
     FetchPriceLevelDataMatTableComponent,
     FetchStrategyDataMatTableComponent,
-    FetchStrategyDataGridComponent
+    FetchStrategyDataGridComponent,
+    FetchPriceLiveDataGridComponent
 
 
   ],

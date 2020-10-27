@@ -1,6 +1,8 @@
-<h4 id="tableLabel">Strategy Grid</h4>
 
-<p *ngIf="!rowStrategyData"><em>Loading...</em></p>
+<br>
+<h4 id="tableLabel">Live Price Grid</h4>
+
+<p *ngIf="!rowPriceData"><em>Loading...</em></p>
 
 
 <!-- <button (click)="getSelectedRows()">Get Selected Rows</button> -->
@@ -15,17 +17,13 @@
     <tr>
       <td><ag-grid-angular
         #agGrid
-        style="width: 100%; height: 250px;"
+        style="width: 100%; height: 150px;"
         class="ag-theme-balham"
-        [rowData]="rowStrategyData"
+        [rowData]="rowPriceData"
         [columnDefs]="columnMarketDefs"
         [defaultColDef]="defaultColDef"
-        (cellValueChanged)="onCellValueChanged($event)"
         (gridReady)="onGridReady($event)">
     </ag-grid-angular></td>
     </tr>
     </tbody>
   </table>
-
-  <app-fetch-price-live-data-grid></app-fetch-price-live-data-grid>
-
