@@ -31,10 +31,10 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
   onGridReady(e): void{
 
     this.columnMarketDefs = [
-      {headerName: 'Market', field: 'market' , width: 100},
-      {headerName: 'BidHigh', field: 'bidHigh', width: 120, enableCellChangeFlash: true},
-      {headerName: 'AskHigh', field: 'askHigh', width: 120, enableCellChangeFlash: true},
-      {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, width: 175}
+      {headerName: 'Market', field: 'market' , width: 90},
+      {headerName: 'Bid', field: 'bidHigh', width: 100, enableCellChangeFlash: true},
+      {headerName: 'Ask', field: 'askHigh', width: 100, enableCellChangeFlash: true},
+      {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, width: 150}
   ];
 
     this.defaultColDef = {
