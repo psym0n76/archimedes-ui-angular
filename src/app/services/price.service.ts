@@ -11,10 +11,10 @@ export class PriceService {
 
   constructor(private configService: ConfigService, private http: HttpClient) {}
 
-  getPrice(): Observable<Price[]> {
+  getFirstPrice(): Observable<Price[]> {
 
-    console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/price for price data');
+    console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/price/bymarket_distinct');
 
-    return this.http.get<Price[]>(this.configService.userInterfaceBaseUrl + '/api/price');
+    return this.http.get<Price[]>(this.configService.userInterfaceBaseUrl + '/api/price/bymarket_distinct');
   }
 }

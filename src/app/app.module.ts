@@ -32,7 +32,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FetchCandleDataMatTableComponent } from './components/fetch-candle-data-mat-table/fetch-candle-data-mat-table.component';
-import { FetchPriceDataMatTableComponent } from './components/fetch-price-data-mat-table/fetch-price-data-mat-table.component';
 import { FetchHealthDataMatTableComponent } from './components/fetch-health-data-mat-table/fetch-health-data-mat-table.component';
 import { FetchCandleDataChartComponent } from './components/fetch-candle-data-chart/fetch-candle-data-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -52,7 +51,6 @@ const appInitializerFn = (appConfig: ConfigurationService) => {
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'fetch-price-data-mat-table', component: FetchPriceDataMatTableComponent },
   { path: 'fetch-price-level-data-mat-table', component: FetchPriceLevelDataMatTableComponent},
   { path: 'fetch-strategy-data-mat-table', component: FetchStrategyDataMatTableComponent},
   { path: 'fetch-strategy-data-grid', component: FetchStrategyDataGridComponent},
@@ -73,7 +71,6 @@ const appRoutes: Routes = [
     MatTableComponent,
     FetchHealthDataMatTableComponent,
     FetchCandleDataMatTableComponent,
-    FetchPriceDataMatTableComponent,
     FetchCandleDataChartComponent,
     DropdownGranularityComponent,
     DropdownMarketComponent,
