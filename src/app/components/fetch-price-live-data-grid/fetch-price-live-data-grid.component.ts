@@ -34,6 +34,7 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
       {headerName: 'Market', field: 'market' , width: 90},
       {headerName: 'Bid', field: 'bidHigh', width: 100, enableCellChangeFlash: true},
       {headerName: 'Ask', field: 'askHigh', width: 100, enableCellChangeFlash: true},
+      {headerName: 'Spread', field: 'spread', width: 100},
       {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, width: 150}
   ];
 
@@ -73,6 +74,7 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
                       rowNode.data.market = type.market;
                       rowNode.data.bidHigh = numberFormatter(type.bidHigh);
                       rowNode.data.askHigh = numberFormatter(type.askHigh);
+                      rowNode.data.spread = numberFormatter((type.askHigh - type.bidHigh)) * 10000;
                       rowNode.data.lastUpdated = type.timeStamp;
                       this.agGrid.api.refreshCells();
                     }
