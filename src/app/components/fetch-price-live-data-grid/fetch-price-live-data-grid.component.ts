@@ -1,3 +1,4 @@
+import { Market } from 'src/app/models/market';
 import { PriceService } from 'src/app/services/price.service';
 import { ConfigService } from './../../services/config.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -8,6 +9,7 @@ import { dateFormatter } from '../formatters/dateFormatters';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Price } from 'src/app/models/price';
 import { numberFormatter } from '../formatters/numberFormatter';
+import { getLocaleDateFormat } from '@angular/common';
 
 
 @Component({
@@ -21,7 +23,8 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
   @ViewChild('agGrid') agGrid: AgGridAngular;
   defaultColDef;
   columnMarketDefs: any = [];
-  rowPriceData: any = [] ;
+  rowPriceData: any = [];
+  marketItem: Market;
 
   public price: Price[];
   frameworkComponents;
@@ -34,16 +37,16 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
     this.columnMarketDefs = [
       {headerName: 'Market', field: 'market' , width: 90},
       {headerName: 'Bid', field: 'bidHigh', width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer' },
-      {headerName: 'Ask', field: 'askHigh', precision: 3, width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer'},
-      {headerName: 'Spread', field: 'spread', width: 100},
+      {headerName: 'Ask', field: 'askHigh',  width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer'},
+      {headerName: 'Spread', field: 'spread', width: 100, valueFormatter: this.numberCellFormatter},
       {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, enableCellChangeFlash: true, width: 150}
   ];
 
     this.defaultColDef = {
       flex: 1,
-      //minWidth: 150,
-      //sortable: true,
-      //filter: true,
+      // minWidth: 150,
+      // sortable: true,
+      // filter: true,
       cellClass: 'align-right'
   };
   }
@@ -53,6 +56,24 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
     return Math.floor(params.value)
       .toString()
       .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
+
+  subscribeToMarket(): any{
+
+    this.marketItem = {
+      name: 'GBP/USD',
+      active: true,
+      brokerTimeInterval: '',
+      brokerTimeMinInterval: '',
+      interval: 2,
+      lastUpdated: new Date(),
+      maxDate: new Date(),
+      minDate: new Date(),
+      quantity: 1 ,
+      timeFrame: '', timeFrameInterval: ''
+  };
+
+    this.priceService.addPriceSubscriber(this.marketItem);
   }
 
   ngOnInit(): void {

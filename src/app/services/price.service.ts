@@ -1,6 +1,7 @@
+import { Market } from 'src/app/models/market';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Price } from '../models/price';
 
@@ -16,5 +17,17 @@ export class PriceService {
     console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/price/bymarket_distinct');
 
     return this.http.get<Price[]>(this.configService.userInterfaceBaseUrl + '/api/price/bymarket_distinct');
+  }
+
+  addPriceSubscriber(market: Market): Observable<Market> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+
+    console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/price/subscribe for ' + market.name);
+    return this.http.put<Market>(this.configService.userInterfaceBaseUrl + '/api/price/subscribe' , JSON.stringify(market), httpOptions);
   }
 }
