@@ -9,6 +9,7 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Price } from 'src/app/models/price';
 import { numberFormatter } from '../formatters/numberFormatter';
 
+
 @Component({
   selector: 'app-fetch-price-live-data-grid',
   templateUrl: './fetch-price-live-data-grid.component.html',
@@ -18,7 +19,7 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
 
   hubConnection: HubConnection;
   @ViewChild('agGrid') agGrid: AgGridAngular;
-  defaultColDef: any = [];
+  defaultColDef;
   columnMarketDefs: any = [];
   rowPriceData: any = [] ;
 
@@ -32,16 +33,26 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
 
     this.columnMarketDefs = [
       {headerName: 'Market', field: 'market' , width: 90},
-      {headerName: 'Bid', field: 'bidHigh', width: 100, enableCellChangeFlash: true},
-      {headerName: 'Ask', field: 'askHigh', width: 100, enableCellChangeFlash: true},
+      {headerName: 'Bid', field: 'bidHigh', width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer' },
+      {headerName: 'Ask', field: 'askHigh', precision: 3, width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer'},
       {headerName: 'Spread', field: 'spread', width: 100},
-      {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, width: 150}
+      {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, enableCellChangeFlash: true, width: 150}
   ];
 
     this.defaultColDef = {
-      sortable: true,
-      filter: true
+      flex: 1,
+      //minWidth: 150,
+      //sortable: true,
+      //filter: true,
+      cellClass: 'align-right'
   };
+  }
+
+  numberCellFormatter(params): any{
+    return numberFormatter(params.value);
+    return Math.floor(params.value)
+      .toString()
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   }
 
   ngOnInit(): void {
@@ -71,12 +82,11 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
                     // console.log('Update receieved ' + type.timeStamp  + ' to replace ' + rowNode.data.lastUpdated);
                     if (rowNode.data.market === type.market)
                     {
-                      rowNode.data.market = type.market;
-                      rowNode.data.bidHigh = numberFormatter(type.bidHigh);
-                      rowNode.data.askHigh = numberFormatter(type.askHigh);
+                      rowNode.setDataValue('market', type.market);
+                      rowNode.setDataValue('bidHigh', numberFormatter(type.bidHigh) * 10000);
+                      rowNode.setDataValue('askHigh', numberFormatter(type.askHigh) * 10000);
                       rowNode.data.spread = numberFormatter((type.askHigh - type.bidHigh)) * 10000;
-                      rowNode.data.lastUpdated = type.timeStamp;
-                      this.agGrid.api.refreshCells();
+                      rowNode.setDataValue('lastUpdated', type.timeStamp);
                     }
                 });
            });

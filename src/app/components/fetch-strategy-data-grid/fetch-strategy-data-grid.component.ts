@@ -53,14 +53,14 @@ export class FetchStrategyDataGridComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/Hubs/Strategy').build();
+    this.hubConnection = new HubConnectionBuilder().withUrl(this.configService.userInterfaceBaseUrl +  '/hubs/strategy').build();
     this.hubConnection
             .start()
-            .then(() => this.toastr.success(this.configService.userInterfaceBaseUrl + '/Hubs/Strategy'))
+            .then(() => this.toastr.success(this.configService.userInterfaceBaseUrl + '/hubs/strategy'))
             .catch(err => console.log('Error while establishing connection : ('));
 
     this.hubConnection.onclose(() => {
-      this.toastr.info('Reconnecting: ' + this.configService.userInterfaceBaseUrl +  '/Hubs/Strategy');
+      this.toastr.info('Reconnecting: ' + this.configService.userInterfaceBaseUrl +  '/hubs/strategy');
       setTimeout(function(): void{
               this.hubConnection.start(); }, 3000);
              });
@@ -98,6 +98,8 @@ getData(): void {
         this.rowStrategyData = response;
         this.toastr.success('Successfully uploaded data'); } , error => {this.handler.logError(error); });
 }
+
+
 
 onCellValueChanged(row: any): void{
 
