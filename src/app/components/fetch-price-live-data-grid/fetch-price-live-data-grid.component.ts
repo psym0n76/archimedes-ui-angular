@@ -74,6 +74,7 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
   };
 
     this.priceService.addPriceSubscriber(this.marketItem);
+    this.toastr.success('Subscribing to GBP/USD');
   }
 
   ngOnInit(): void {
