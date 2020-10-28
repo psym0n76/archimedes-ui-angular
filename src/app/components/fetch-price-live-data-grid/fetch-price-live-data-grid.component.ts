@@ -38,7 +38,7 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
       {headerName: 'Market', field: 'market' , width: 90},
       {headerName: 'Bid', field: 'bidHigh', width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer' },
       {headerName: 'Ask', field: 'askHigh',  width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer'},
-      {headerName: 'Spread', field: 'spread', width: 100, valueFormatter: this.numberCellFormatter},
+      {headerName: 'Spread', field: 'spread', width: 100},
       {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, enableCellChangeFlash: true, width: 150}
   ];
 
