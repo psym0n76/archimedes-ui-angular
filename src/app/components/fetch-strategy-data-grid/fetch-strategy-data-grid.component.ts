@@ -24,7 +24,8 @@ export class FetchStrategyDataGridComponent implements OnInit {
   public strategy: Strategy[];
   frameworkComponents;
 
-  constructor(private strategyService: StrategyService, private toastr: ToastrService, private handler: AppError, private configService: ConfigService) { }
+  constructor(private strategyService: StrategyService, private toastr: ToastrService,
+              private handler: AppError, private configService: ConfigService) { }
 
   onGridReady(e): void{
 
