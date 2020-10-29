@@ -10,4 +10,5 @@ export interface Market {
     brokerTimeMinInterval: string;
     brokerTimeInterval: string;
     quantity: number;
+    timeStamp: Date;
   }

@@ -9,8 +9,7 @@ import { dateFormatter } from '../formatters/dateFormatters';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Price } from 'src/app/models/price';
 import { numberFormatter } from '../formatters/numberFormatter';
-import { getLocaleDateFormat } from '@angular/common';
-
+import { MarketSubscriber } from 'src/app/models/market-subscriber';
 
 @Component({
   selector: 'app-fetch-price-live-data-grid',
@@ -24,7 +23,7 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
   defaultColDef;
   columnMarketDefs: any = [];
   rowPriceData: any = [];
-  marketItem: Market;
+  marketItem: MarketSubscriber;
 
   public price: Price[];
   frameworkComponents;
@@ -61,16 +60,7 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
   subscribeToMarket(): any{
 
     this.marketItem = {
-      name: 'GBP/USD',
-      active: true,
-      brokerTimeInterval: '',
-      brokerTimeMinInterval: '',
-      interval: 2,
-      lastUpdated: new Date(),
-      maxDate: new Date(),
-      minDate: new Date(),
-      quantity: 1 ,
-      timeFrame: '', timeFrameInterval: ''
+      name: 'GBP/USD'
   };
 
     this.priceService.addPriceSubscriber(this.marketItem);

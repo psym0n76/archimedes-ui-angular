@@ -1,3 +1,4 @@
+import { MarketSubscriber } from './../models/market-subscriber';
 import { Market } from 'src/app/models/market';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
@@ -19,7 +20,7 @@ export class PriceService {
     return this.http.get<Price[]>(this.configService.userInterfaceBaseUrl + '/api/price/bymarket_distinct');
   }
 
-  addPriceSubscriber(market: Market): Observable<Market> {
+  addPriceSubscriber(market: MarketSubscriber): Observable<Market> {
 
     const httpOptions = {
       headers: new HttpHeaders({
