@@ -20,7 +20,7 @@ export class PriceService {
     return this.http.get<Price[]>(this.configService.userInterfaceBaseUrl + '/api/price/bymarket_distinct');
   }
 
-  addPriceSubscriber(market: MarketSubscriber): Observable<Market> {
+  addPriceSubscriber(market: MarketSubscriber): Observable<MarketSubscriber> {
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -29,6 +29,7 @@ export class PriceService {
     };
 
     console.log('Calling: ' + this.configService.userInterfaceBaseUrl + '/api/price/subscribe for ' + market.name);
-    return this.http.put<Market>(this.configService.userInterfaceBaseUrl + '/api/price/subscribe' , JSON.stringify(market), httpOptions);
+    return this.http.put<MarketSubscriber>(this.configService.userInterfaceBaseUrl + '/api/price/subscribe' ,
+             JSON.stringify(market), httpOptions);
   }
 }

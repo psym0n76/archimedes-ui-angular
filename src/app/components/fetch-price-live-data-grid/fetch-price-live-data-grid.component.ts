@@ -1,4 +1,4 @@
-import { Market } from 'src/app/models/market';
+import { MarketSubscriber } from './../../models/market-subscriber';
 import { PriceService } from 'src/app/services/price.service';
 import { ConfigService } from './../../services/config.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -9,7 +9,6 @@ import { dateFormatter } from '../formatters/dateFormatters';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Price } from 'src/app/models/price';
 import { numberFormatter } from '../formatters/numberFormatter';
-import { MarketSubscriber } from 'src/app/models/market-subscriber';
 
 @Component({
   selector: 'app-fetch-price-live-data-grid',
@@ -63,11 +62,13 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
       name: 'GBP/USD'
   };
 
-    this.priceService.addPriceSubscriber(this.marketItem);
-    this.toastr.success('Subscribing to GBP/USD');
+    this.priceService.addPriceSubscriber(this.marketItem)
+  .subscribe((response: MarketSubscriber) => {
+this.toastr.success('Successfully subscribed to GBP/USD'); } , error => {this.handler.logError(error); });
   }
 
-  ngOnInit(): void {
+
+ngOnInit(): void {
 
     this.priceService
     .getFirstPrice()
