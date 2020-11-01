@@ -6,9 +6,9 @@ style="width: 75% ; height: 400px; display: block;" ></highcharts-chart> -->
 
 <p>This chart displays current pricing data in the Candle format</p>
 
-<app-dropdown-granularity [granularity]="granularity" (changeGranularity)="onGranularityChange($event)"> </app-dropdown-granularity>
-<span></span>
 <app-dropdown-market [market]="market" (changeMarket)="onMarketChange($event)"></app-dropdown-market>
+<span></span>
+<app-dropdown-granularity [granularity]="granularity" (changeGranularity)="onGranularityChange($event)"></app-dropdown-granularity>
 
 <!-- <button class="btn btn-primary" (click)="incrementCounter()">Increment</button> -->
 <div id="container" style="height: 600px; min-width: 310px"></div>

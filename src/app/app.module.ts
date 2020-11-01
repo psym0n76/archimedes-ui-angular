@@ -35,8 +35,8 @@ import { FetchCandleDataMatTableComponent } from './components/fetch-candle-data
 import { FetchHealthDataMatTableComponent } from './components/fetch-health-data-mat-table/fetch-health-data-mat-table.component';
 import { FetchCandleDataChartComponent } from './components/fetch-candle-data-chart/fetch-candle-data-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { DropdownGranularityComponent } from './components/fetch-candle-data-chart/dropdown-granularity/dropdown-granularity.component';
-import { DropdownMarketComponent } from './components/fetch-candle-data-chart/dropdown-market/dropdown-market.component';
+import { DropdownGranularityComponent } from './components/drop-down/dropdown-granularity/dropdown-granularity.component';
+import { DropdownMarketComponent } from './components/drop-down/dropdown-market/dropdown-market.component';
 import { FetchPriceLevelDataMatTableComponent } from './components/fetch-price-level-data-mat-table/fetch-price-level-data-mat-table.component';
 import { FetchStrategyDataMatTableComponent } from './components/fetch-strategy-data-mat-table/fetch-strategy-data-mat-table.component';
 import { FetchStrategyDataGridComponent } from './components/fetch-strategy-data-grid/fetch-strategy-data-grid.component';

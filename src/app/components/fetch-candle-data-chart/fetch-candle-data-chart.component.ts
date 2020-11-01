@@ -1,6 +1,7 @@
 import { CandleService } from 'src/app/services/candle.service';
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts/highstock';
+import { Candle } from 'src/app/models/candle';
 
 @Component({
   selector: 'app-fetch-candle-data-chart',
@@ -11,9 +12,12 @@ export class FetchCandleDataChartComponent implements OnInit {
 
   Highcharts: typeof Highcharts = Highcharts;
   market = 'GBP/USD';
-  granularity = '5Min';
+  granularity = '1D';
+  dataSource: Candle[];
+  toastr: any;
+  handler: any;
 
-  constructor(private candleService: CandleService) {}
+  constructor(private candleService: CandleService, ) {}
 
    ngOnInit(): void {
 
@@ -39,6 +43,7 @@ async refresh(): Promise<void> {
     }]
 });
 }
+
 
 onGranularityChange(granularity: string): void{
   this.granularity = granularity;

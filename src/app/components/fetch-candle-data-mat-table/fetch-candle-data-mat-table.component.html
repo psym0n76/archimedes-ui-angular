@@ -1,4 +1,6 @@
-<p>Displaying data from the Candle table</p>
+<h2>Candles</h2>
+<p> </p>
+
 <p *ngIf="!dataSource"><em>Loading...</em></p>
 
 <!-- <div>
@@ -8,7 +10,11 @@
 </app-mat-table>
 </div> -->
 
-<input matInput (keyup)="onSearchInput($event)" placeholder="Search...">
+<!-- <input matInput (keyup)="onSearchInput($event)" placeholder="Search..."> -->
+
+<app-dropdown-market [market]="market"  (changeMarket)="onMarketChange($event)"></app-dropdown-market>
+<span></span>
+<app-dropdown-granularity [granularity]="granularity" (changeGranularity)="onGranularityChange($event)"> </app-dropdown-granularity>
 
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="margin-bottom: 12px;">
   
@@ -57,6 +63,12 @@
         <tr mat-row [ngClass]="{gray: even}" *matRowDef="let element; let even = even; columns: displayedColumns;" ></tr>
       </table>
       <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+
+      <!-- <mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = getCandleData($event)">
+</mat-paginator> -->
 
 
 
