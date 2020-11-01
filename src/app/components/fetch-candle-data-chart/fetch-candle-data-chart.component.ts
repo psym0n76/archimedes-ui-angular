@@ -17,6 +17,8 @@ export class FetchCandleDataChartComponent implements OnInit {
   toastr: any;
   handler: any;
 
+ 
+
   constructor(private candleService: CandleService, ) {}
 
    ngOnInit(): void {
@@ -25,9 +27,12 @@ export class FetchCandleDataChartComponent implements OnInit {
 }
 
 async refresh(): Promise<void> {
+
   Highcharts.stockChart('container', {
+
     rangeSelector: {
         selected: 1
+
     },
 
     title: {
@@ -38,6 +43,7 @@ async refresh(): Promise<void> {
         type: 'candlestick',
         name: this.market,
         data: await this.candleService.getCandleOhlc(this.market, this.granularity),
+        //dataGrouping: {units: [ ['week', [1]], ['month', [1, 2, 3]]]},
         dataGrouping: {},
         turboThreshold: 50000
     }]
