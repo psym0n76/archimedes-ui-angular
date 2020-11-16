@@ -34,8 +34,8 @@ export class FetchPriceLiveDataGridComponent implements OnInit {
 
     this.columnMarketDefs = [
       {headerName: 'Market', field: 'market' , width: 90},
-      {headerName: 'Bid', field: 'bidHigh', width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer' },
-      {headerName: 'Ask', field: 'askHigh',  width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer'},
+      {headerName: 'Bid', field: 'bid', width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer' },
+      {headerName: 'Ask', field: 'ask',  width: 200, valueFormatter: this.numberCellFormatter, cellRenderer: 'agAnimateShowChangeCellRenderer'},
       {headerName: 'Spread', field: 'spread', width: 100},
       {headerName: 'Updated', field: 'lastUpdated', valueFormatter: dateFormatter, enableCellChangeFlash: true, width: 150}
   ];
@@ -96,9 +96,9 @@ ngOnInit(): void {
                     if (rowNode.data.market === type.market)
                     {
                       rowNode.setDataValue('market', type.market);
-                      rowNode.setDataValue('bidHigh', numberFormatter(type.bidHigh) * 10000);
-                      rowNode.setDataValue('askHigh', numberFormatter(type.askHigh) * 10000);
-                      rowNode.data.spread = numberFormatter((type.askHigh - type.bidHigh)) * 10000;
+                      rowNode.setDataValue('bid', numberFormatter(type.bid) * 10000);
+                      rowNode.setDataValue('ask', numberFormatter(type.ask) * 10000);
+                      rowNode.data.spread = numberFormatter((type.ask - type.bid)) * 10000;
                       rowNode.setDataValue('lastUpdated', type.timeStamp);
                     }
                 });
