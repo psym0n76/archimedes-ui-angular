@@ -1,9 +1,12 @@
-<h4 id="tableLabel">Market Grid</h4>
 
-<p>This component demonstrates fetching data from the server and displaying in AG-Grid.</p>
+<table>
+    <app-fetch-price-live-data-grid></app-fetch-price-live-data-grid>
+  </table>
 
-<p *ngIf="!rowMarketData"><em>Loading...</em></p>
 <br>
+<h4 id="tableLabel">Live Trade Grid</h4>
+
+<p *ngIf="!rowTradeData"><em>Loading...</em></p>
 
 <table class='table table-striped' aria-labelledby="tableLabel">
     <thead>
@@ -15,15 +18,22 @@
     <tr>
       <td><ag-grid-angular
         #agGrid
-        style="width: 100%; height: 300px;"
+        style="width: 1100px; height: 100px;"
         class="ag-theme-balham"
-        [rowData]="rowMarketData"
+        [rowData]="rowTradeData"
         [columnDefs]="columnMarketDefs"
         [defaultColDef]="defaultColDef"
-        (cellValueChanged)="onCellValueChanged($event)"
         (gridReady)="onGridReady($event)">
     </ag-grid-angular></td>
     </tr>
+
     </tbody>
+
   </table>
+
+
+
+
+
+
 

@@ -1,22 +1,18 @@
-<p>fetch-price-level-data-grid works!</p>
 
-
+<table>
+    <app-fetch-price-live-data-grid></app-fetch-price-live-data-grid>
+</table>
 <br>
 <h4 id="tableLabel">Live Price Level Grid</h4>
 
 <p *ngIf="!rowPriceLevelData"><em>Loading...</em></p>
 
 <table class='table table-striped' aria-labelledby="tableLabel">
-    <thead>
-    <tr>
-      <th></th>
-    </tr>
-    </thead>
     <tbody>
     <tr>
       <td><ag-grid-angular
         #agGrid
-        style="width: 1100px; height: 500px;"
+        style="width: 1100px; height: 300px;"
         class="ag-theme-balham"
         [rowData]="rowPriceLevelData"
         [columnDefs]="columnMarketDefs"
@@ -26,6 +22,9 @@
     </tr>
     </tbody>
   </table>
+
+
+
 
 
 

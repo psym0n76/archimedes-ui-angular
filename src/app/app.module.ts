@@ -43,6 +43,7 @@ import { FetchStrategyDataGridComponent } from './components/fetch-strategy-data
 import { FetchMarketDataGridComponent } from './components/fetch-market-data-grid/fetch-market-data-grid.component';
 import { FetchPriceLiveDataGridComponent } from './components/fetch-price-live-data-grid/fetch-price-live-data-grid.component';
 import { FetchPriceLevelDataGridComponent } from './components/fetch-price-level-data-grid/fetch-price-level-data-grid.component';
+import { FetchTradeDataGridComponent } from './components/fetch-trade-data-grid/fetch-trade-data-grid.component';
 
 const appInitializerFn = (appConfig: ConfigurationService) => {
   return () => {
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
   { path: 'fetch-market-data-mat-table', component: FetchMarketDataMatTableComponent },
   { path: 'fetch-candle-data-chart', component: FetchCandleDataChartComponent},
   { path: 'fetch-candle-data-mat-table', component: FetchCandleDataMatTableComponent },
+  { path: 'fetch-trade-data-grid', component: FetchTradeDataGridComponent },
   { path: 'fetch-market-data-grid', component: FetchMarketDataGridComponent },
   { path: 'fetch-health-data-mat-table', component: FetchHealthDataMatTableComponent }];
 
@@ -80,7 +82,8 @@ const appRoutes: Routes = [
     FetchStrategyDataMatTableComponent,
     FetchStrategyDataGridComponent,
     FetchPriceLiveDataGridComponent,
-    FetchPriceLevelDataGridComponent
+    FetchPriceLevelDataGridComponent,
+    FetchTradeDataGridComponent
 
 
   ],
